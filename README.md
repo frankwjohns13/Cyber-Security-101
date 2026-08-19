@@ -108,6 +108,8 @@ It helps determine whether a file or website is malicious.
 
 ---
 
+**End Module 1**
+
 </details> <!-- End of Module 1 --> 
 
 ---
