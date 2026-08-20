@@ -130,30 +130,53 @@ It helps determine whether a file or website is malicious.
 <details>
 <summary><strong>Room 1 - Linux Fundamentals Part 1</strong></summary>
 
+---
 
+**Learning Objectives**
+- Understand where Linux is commonly used
+- Learn essential Linux commands for navigating the system
+- Practice basic file and text operations
 
+---
 
+#### Where is Linux Used?
 
+Linux powers many systems, including:
+- Websites and web servers
+- Car entertainment and control systems
+- Critical infrastructure (traffic lights, industrial sensors)
+- Phones and tablets
+- Point-of-sale devices
 
+---
 
+#### Essential Linux Commands
 
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `whoami` | Shows the current username | `whoami` |
+| `echo` | Displays text on the screen | `echo "Hello"` |
+| `pwd` | Prints the current working directory | `pwd` |
+| `ls` | Lists files and folders | `ls` |
+| `cd` | Changes directory | `cd Documents` |
+| `cat` | Displays the contents of a file | `cat notes.txt` |
+| `find` | Searches for files by name | `find -name passwords.txt` |
+| `grep` | Searches for text inside files | `grep "password" file.txt` |
 
+---
 
+#### Useful Operators
 
+| Operator | Purpose | Example |
+|----------|---------|---------|
+| `&` | Runs a command in the background | `long_command &` |
+| `&&` | Runs the next command only if the previous one succeeds | `mkdir test && cd test` |
+| `>` | Redirects output (overwrites the file) | `ls > files.txt` |
+| `>>` | Redirects output (appends to the file) | `ls >> files.txt` |
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
+**End of Room 1**
 
 
   
