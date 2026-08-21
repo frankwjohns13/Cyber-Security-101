@@ -139,6 +139,8 @@ It helps determine whether a file or website is malicious.
 
 ---
 
+### Room 1 - Linux Fundamentals Part 1 
+
 #### Where is Linux Used?
 
 Linux powers many systems, including:
@@ -187,31 +189,117 @@ Linux powers many systems, including:
 <details>
 <summary><strong>Room 2 - Linux Fundamentals Part 2</strong></summary>
 
+---
+
+### Room 2 - Linux Fundamentals Part 2
+
+**Learning Objectives**
+- Understand flags and arguments
+- Work with the advanced filesystem
+- Use copy and move commands
+- Manage file and folder permissions
+
+---
+
+#### What is SSH?
+
+**SSH (Secure Shell)** is a protocol used to securely connect to remote devices.
+- Allows you to run commands on another machine
+- Encrypts all data sent over the network
+
+**Basic syntax:**
+```
+bash
+ssh username@ip_address
+```
+
+**Example:**
+```
+bash
+ssh frank@192.168.1.13
+```
+
+---
+
+#### Flags and Help
+
+Most Linux commands accept flags (also called switches) that change their behavior.
+
+| **Command** | **Purpose**                |
+|-------------|----------------------------|
+| ls --help   | Quick help for the command |
+| man ls      | Full manual page           |
+
+**Example:**
+```
+bash
+ls -a  # Lists all files, including hidden ones
+```
+
+---
+
+#### Common File Management Commands
+
+| **Command** | **Full Name**  | **Purpose**              | **Example**           |
+|-------------|----------------|--------------------------|-----------------------|
+| touch       | touch          | Create an empty file     | touch test.txt        |
+| mkdir       | make directory | Create a folder          | mkdir folder1         |
+| cp          | copy           | Copy a file or folder    | cp test.txt folder1/  |
+| mv          | move           | Move a file or folder    | mv test.txt test2.txt |
+| rm          | remove         | Remove a file or folder  | rm test.txt           |
+| file        | file           | Shows the type of a file | file test.txt         |
+
+---
+
+#### File Permissions
+
+Linux permissions control who can read, write, or execute a file.
+
+**Permission types:**
+- `r` = Read
+- `w` = Write
+- `x` = Execute
+
+**Numeric values:**
+
+| **Permission** | **Value** |
+|----------------|:---------:|
+| Read (`r`)     | 4         |
+| Write (`w`)    | 2         |
+| Execute (`x`)  | 1         |
+
+**Permissions order:**
+
+| **Section** | **Applies To** |
+|-------------|----------------|
+| First 3 characters | Owner   |
+| Next 3 characters  | Group   |
+| Last 3 characters  | Others  |
+
+**Examples:**
+
+| **Symbolic** | **Numeric** | **Meaning**                                      |
+|--------------|:-----------:|--------------------------------------------------|
+| `rwxr-xr-x`  | 755         | Owner: full access, Group/Others: read + execute |
+| `rw-r--r--`  | 644         | Owner: read/write, Group/Others: read only       |
+| `rwx------`  | 700         | Only the owner has access                        |
+
+---
+
+#### Important Linux Directories
+
+| **Directory** | **Purpose**                                |
+|---------------|--------------------------------------------|
+|`/etc`         | System configuration files                 |
+| `/var`        | Variable data (logs, caches, etc.)         |
+| `/root`       | Home directory of the root user            |
+| `/tmp`        | Temporary files (often cleared on reboot ) |
+
+---
+
+**End of Room 2**
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </details> <!-- End Room 2 -->
 
 ---
