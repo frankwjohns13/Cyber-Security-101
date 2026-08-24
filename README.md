@@ -307,24 +307,172 @@ Linux permissions control who can read, write, or execute a file.
 <details>
 <summary><strong>Room 3 - Linux Fundamentals Part 3</strong></summary>
 
+---
 
+### Room 3 - Linux Fundamentals Part 3
 
+**Learning Objectives**
+- Use terminal text editors
+- Download and transfer files
+- Manage processes
+- Schedule tasks with cron
+- Understand basic package management and logs
 
+---
 
+#### Terminal Text Editors
 
+**Nano** (beginner-friendly)
+```bash
+nano filename
+```
 
+**Useful features:**
+- Search text
+- Copy and paste
+- Jump to a line number
 
+Exit **Nano**: `Ctrl + X` (it will ask if you want to save)
 
+**Vim** (more powerful, steeper learning curve)
+- Highly customizable
+- Syntax highlighting
+- Available on almost every Linux system
 
+---
 
+#### Downloading and Transferring Files
 
+Download files with `wget`
 
+```bash
+wget https://example.com/file.pdf
+```
 
+**Transfer files with scp (Secure Copy)**
 
+Copy from your computer → remote machine:
 
+```bash
+scp thisfile.txt ubuntu@192.168.10.13:/home/ubuntu/thisfile.txt
+```
 
+Copy from remote machine → your computer:
 
+```bash
+scp ubuntu@192.168.10.13:/home/ubuntu/thisfile.txt thisfile.txt
+```
 
+---
+
+#### Processes
+
+**View running processes**
+
+```bash
+ps       # Processes for the current user
+ps aux   # Processes for all users
+```
+
+**Kill a process**
+
+```bash
+kill 1013
+```
+
+**Common signals:**
+
+| **Signal** | **Meaning** |
+|------------|-------------|
+| SIGTERM    | Graceful stop (allows cleanup) |
+| SIGKILL    | Force kill (no cleanup) |
+| SIGSTOP    | Pause/suspend the process |
+
+Manage services with `systemctl`
+
+```bash
+systemctl start apache2
+systemctl stop apache2
+systemctl enable apache2
+systemctl disable apache2
+systemctl status apache2
+```
+
+**Background and Foreground**
+
+```bash
+cp largefile.txt /folder/ &     # Run in background
+Ctrl + Z                        # Suspend current process
+fg                              # Bring process back to foreground
+```
+
+---
+
+#### Scheduling Tasks with Cron
+
+Crontab format:
+
+```text
+MIN HOUR DOM MON DOW COMMAND
+```
+
+| **Field** | **Meaning**         |
+|-----------|---------------------|
+| MIN       | Minute (0–59)       |
+| HOUR      | Hour (0–23)         |
+| DOM       | Day of month (1–31) |
+| MON       | Month (1–12)        |
+| DOW       | Day of week (0–7)   |
+| CMD       | Command to run      |
+
+**Example: Backup Documents every 12 hours**
+```bash
+0 */12 * * * cp -R /home/user/Documents /var/backups/
+```
+
+**Edit your crontab:**
+
+```bash
+crontab -e
+```
+
+Helpful sites:
+- [crontab guru](https://crontab.guru/)
+- [crontab generator](https://crontab-generator.org/)
+
+---
+
+#### Package Management
+
+Add a repository:
+
+```bash
+add-apt-repository <repository>
+```
+
+**Remove a repository:**
+
+```bash
+add-apt-repository --remove <repository>
+```
+
+---
+
+#### System Logs
+
+Important logs are usually found in:
+
+```text
+/var/log/
+```
+
+Two common types:
+- **Access logs** — Who accessed what
+- **Error logs** — What went wrong
+
+---
+
+**End of Room 3**
 
 
 
