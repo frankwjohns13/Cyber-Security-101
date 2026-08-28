@@ -1,6 +1,10 @@
-# Cyber Security 101
-TryHackMe Cyber Security 101 Notes
+# TryHackMe Cyber Security 101
 
+## Introduction
+Welcome to my notes for the TryHackMe Cyber Security 101 learning path. \
+You can view my TryHackMe Badges here -> [Badges](https://tryhackme.com/p/WickedWizard?tab=badges)
+
+---
 
 <details>
 <summary><strong>Module 1</strong></summary>
