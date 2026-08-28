@@ -474,31 +474,10 @@ Two common types:
 
 **End of Room 3**
 
-
-
-
-
-
-
-
-
-
   
 </details> <!-- End Room 3 -->
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -531,6 +510,133 @@ Two common types:
 <details>
 <summary><strong>Module 3</strong></summary>
 
+---
+
+<details>
+<summary><strong>Room 1 - Windows Fundamentals 1</strong></summary>
+  
+---
+
+### Room 1 - Windows Fundamentals 1
+
+**Learning Objectives**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+**End of Room 1**
+
+
+
+</details> <!-- End of Room 1 -->
+
+---
+
+<details>
+<summary><strong>Room 2 - Windows Fundamentals 2</strong></summary>
+  
+---
+
+### Room 2 - Windows Fundamentals 2
+
+**Learning Objectives**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+**End of Room 2**
+
+</details> <!-- End of Room 2 -->
+
+---
+
+<details>
+<summary><strong>Room 3 - Windows Fundamentals 3</strong></summary>
+  
+---
+
+### Room 3 - Windows Fundamentals 3
+
+**Learning Objectives**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+**End of Room 3**
+
+
+</details> <!-- End of Room 3 -->
+
+---
+
+<details>
+<summary><strong>Room 4 - Active Directory Basics</strong></summary>
+  
+---
+
+### Room 4 - Active Directory Basics
+
+**Learning Objectives**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+**End of Room 4**
+
+</details> <!-- End of Room 4 -->
 
 
 
@@ -548,19 +654,9 @@ Two common types:
 
 
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
+**End of Module 3**
 
   
 </details> <!-- End of Module 3 --> 
