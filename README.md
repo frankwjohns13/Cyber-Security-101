@@ -563,7 +563,9 @@ Two common types:
 ### Room 1 - Windows Fundamentals 1
 
 **Learning Objectives**
+- Coming soon
 
+*Notes coming soon*
 
 
 
@@ -596,9 +598,9 @@ Two common types:
 ### Room 2 - Windows Fundamentals 2
 
 **Learning Objectives**
+- Coming soon
 
-
-
+*Notes coming soon*
 
 
 
@@ -628,7 +630,9 @@ Two common types:
 ### Room 3 - Windows Fundamentals 3
 
 **Learning Objectives**
+- Coming soon
 
+*Notes coming soon*
 
 
 
@@ -661,8 +665,9 @@ Two common types:
 ### Room 4 - Active Directory Basics
 
 **Learning Objectives**
+- Coming soon
 
-
+*Notes coming soon*
 
 
 
