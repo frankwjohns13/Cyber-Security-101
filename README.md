@@ -7,7 +7,7 @@ You can view my TryHackMe Badges here -> [Badges](https://tryhackme.com/p/Wicked
 ---
 
 <details>
-<summary><strong>Module 1</strong></summary>
+<summary><strong>Module 1 - Finished</strong></summary>
 
 ---
 
@@ -118,6 +118,19 @@ It helps determine whether a file or website is malicious.
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
 ***********************************************************************
 ***********************************************************************
@@ -126,8 +139,21 @@ It helps determine whether a file or website is malicious.
 ***********************************************************************
 -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><strong>Module 2</strong></summary>
+<summary><strong>Module 2 - Finished</strong></summary>
 
 ---
 
@@ -484,24 +510,23 @@ Two common types:
 ---
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 **End of Module 2**
   
 </details> <!-- End of Module 2 --> 
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--
 ***********************************************************************
@@ -511,8 +536,22 @@ Two common types:
 ***********************************************************************
 -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><strong>Module 3</strong></summary>
+<summary><strong>Module 3 - Currently in Progress</strong></summary>
 
 ---
 
