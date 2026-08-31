@@ -884,23 +884,143 @@ Warning: Making incorrect changes to the registry can break the system. Only adv
 ### Room 3 - Windows Fundamentals 3
 
 **Learning Objectives**
-- Coming soon
+- Understand Windows Update and Patch Tuesday
+- Navigate Windows Security features
+- Explain Virus & threat protection settings
+- Understand Firewall profiles and SmartScreen
+- Describe BitLocker and Volume Shadow Copy Service (VSS)
 
-*Notes coming soon*
+---
 
+#### Windows Update
 
+Windows Update delivers:
+- Security patches
+- Feature updates
+- Microsoft product updates (including Defender)
 
+**Patch Tuesday**  
+Most updates are released on the **second Tuesday of each month**.  
+Critical updates can be released outside this schedule.
 
+Updates can be postponed, but they eventually install and may require a restart.
 
+---
 
+#### Windows Security
 
+**Windows Security** is the central place to manage device protection.
 
+**Main protection areas:**
+- Virus & threat protection
+- Firewall & network protection
+- App & browser control
+- Device security
 
+**Status icons:**
+- 🟢 Green → Protected
+- 🟡 Yellow → Recommendation available
+- 🔴 Red → Immediate attention needed
 
+---
 
+#### Virus & Threat Protection
 
+**Scan options:**
+- **Quick scan** — Checks common threat locations
+- **Full scan** — Scans the entire system
+- **Custom scan** — Scan selected files/folders
 
+**Key settings:**
+- **Real-time protection** — Blocks malware as it tries to run
+- **Cloud-delivered protection** — Uses latest threat data from the cloud
+- **Automatic sample submission** — Sends samples to Microsoft
+- **Controlled folder access** — Protects important folders from unauthorized changes
+- **Exclusions** — Files/folders skipped by scans (use carefully)
 
+**Threat history includes:**
+- Last scan results
+- Quarantined threats
+- Allowed threats
+
+---
+
+#### Firewall & Network Protection
+
+A **firewall** controls what traffic is allowed in and out of the system.
+
+**Three firewall profiles:**
+
+| Profile | Used For |
+|---------|----------|
+| **Domain** | Corporate domain networks |
+| **Private** | Home or trusted networks |
+| **Public** | Public Wi-Fi (coffee shops, airports, etc.) |
+
+You can:
+- Turn the firewall on/off (not recommended)
+- Block all incoming connections
+- Allow specific apps through the firewall
+
+**Advanced tool:** `wf.msc`
+
+---
+
+#### App & Browser Control
+
+Uses **Microsoft Defender SmartScreen** to protect against:
+- Phishing websites
+- Malicious apps
+- Dangerous downloads
+
+**Settings options:**
+- Warn
+- Block
+- Off
+
+Also includes **Exploit protection** features built into Windows.
+
+---
+
+#### Device Security
+
+**Core isolation / Memory Integrity**  
+Helps prevent attacks from injecting malicious code into high-security processes.
+
+**Trusted Platform Module (TPM)**  
+A hardware security chip that supports encryption and secure cryptographic operations.
+
+---
+
+#### BitLocker
+
+**BitLocker** is Windows’ full-disk encryption feature.
+
+It protects data if a device is lost or stolen.  
+Best protection is available when used with a **TPM**.
+
+---
+
+#### Volume Shadow Copy Service (VSS)
+
+**VSS** creates point-in-time snapshots (shadow copies) of data.
+
+These snapshots are used for:
+- System Restore
+- Creating restore points
+- Recovering files
+
+**Security note:**  
+Some malware (especially ransomware) tries to delete shadow copies to prevent recovery.
+
+---
+
+#### Key Security Takeaway
+
+Windows includes many built-in security tools.  
+Keeping them enabled and updated significantly improves protection.
+
+Attackers often abuse legitimate Windows tools (**Living Off The Land**) to avoid detection.
 
 ---
 
@@ -922,6 +1042,38 @@ Warning: Making incorrect changes to the registry can break the system. Only adv
 - Coming soon
 
 *Notes coming soon*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
