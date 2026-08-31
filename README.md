@@ -563,25 +563,145 @@ Two common types:
 ### Room 1 - Windows Fundamentals 1
 
 **Learning Objectives**
-- Coming soon
-
-*Notes coming soon*
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Understand the basic history and current versions of Windows
+- Identify the main components of the Windows Desktop (GUI)
+- Explain the NTFS file system and basic permissions
+- Understand user accounts, profiles, and User Account Control (UAC)
+- Navigate Settings, Control Panel, and Task Manager
 
 ---
 
+#### Brief History of Windows
+
+Windows has been the dominant desktop operating system for decades.
+
+Key versions:
+- **Windows XP** — Long-lasting and widely used
+- **Windows Vista** — Poorly received and short-lived
+- **Windows 7** — Popular replacement for XP
+- **Windows 8/8.1** — Short-lived
+- **Windows 10** — Widely adopted
+- **Windows 11** — Current desktop version (Home and Pro)
+- **Windows Server 2025** — Current server version
+
+The lab VM uses **Windows Server 2019 Standard**.
+
+---
+
+#### The Windows Desktop (GUI)
+
+Main components of the Desktop:
+
+| Component | Purpose |
+|-----------|---------|
+| **Desktop** | Area for shortcuts, files, and folders |
+| **Start Menu** | Access to apps, settings, and power options |
+| **Search Box** | Search for apps, files, and settings |
+| **Task View** | Switch between open windows and virtual desktops |
+| **Taskbar** | Shows open apps and pinned shortcuts |
+| **Notification Area** | Clock, volume, network, and system icons |
+
+**Useful tip:** Right-click almost any item to see more options.
+
+---
+
+#### The File System – NTFS
+
+Modern Windows systems use **NTFS** (New Technology File System).
+
+**Advantages of NTFS:**
+- Supports large files (over 4GB)
+- Folder and file permissions
+- Compression
+- Encryption (EFS)
+- Journaling (can recover from failures)
+
+**Common NTFS Permissions:**
+- Full control
+- Modify
+- Read & Execute
+- List folder contents
+- Read
+- Write
+
+**Alternate Data Streams (ADS)**  
+NTFS allows files to contain more than one stream of data.  
+This feature has been used by malware to hide data, but it also has legitimate uses.
+
+---
+
+#### Important Folders
+
+| Folder | Purpose |
+|--------|---------|
+| `C:\Windows` | Main Windows operating system folder |
+| `C:\Windows\System32` | Critical system files and tools |
+| `C:\Users` | User profile folders |
+
+**Warning:** Be very careful with the `System32` folder. Deleting files here can break the operating system.
+
+---
+
+#### User Accounts and Permissions
+
+Two main local account types:
+
+| Account Type | Privileges |
+|--------------|------------|
+| **Administrator** | Can make system-wide changes |
+| **Standard User** | Limited to their own files and settings |
+
+User profiles are stored in:
+`C:\Users<username>`
+
+Common profile folders:
+- Desktop
+- Documents
+- Downloads
+- Pictures
+- Music
+
+You can manage users and groups with:
+`lusrmgr.msc`
+
+---
+
+#### User Account Control (UAC)
+
+**UAC** helps protect the system by prompting for permission when a task needs elevated privileges.
+
+- Standard users will see a password prompt
+- Administrators will usually see a Yes/No prompt
+- The built-in Administrator account is not affected by UAC by default
+
+This reduces the chance of malware making system changes without the user noticing.
+
+---
+
+#### Settings and Control Panel
+
+| Tool | Purpose |
+|------|---------|
+| **Settings** | Modern, simpler interface for common changes |
+| **Control Panel** | Older interface for more advanced system settings |
+
+Both can be accessed from the Start Menu.  
+Some options in Settings will open Control Panel windows.
+
+---
+
+#### Task Manager
+
+**Task Manager** shows:
+- Running applications and processes
+- CPU and memory usage
+- Performance information
+
+**Open it by:**
+- Right-clicking the taskbar → Task Manager  
+- Or pressing `Ctrl + Shift + Esc`
+
+---
 **End of Room 1**
 
 
