@@ -718,21 +718,155 @@ Some options in Settings will open Control Panel windows.
 ### Room 2 - Windows Fundamentals 2
 
 **Learning Objectives**
-- Coming soon
+- Use System Configuration (MSConfig) and Advanced System Settings
+- Manage User Account Control (UAC) settings
+- Navigate Computer Management tools
+- Use System Information and Resource Monitor
+- Run basic Command Prompt commands
+- Understand the purpose of the Windows Registry
 
-*Notes coming soon*
+---
 
+#### System Configuration (MSConfig)
 
+**MSConfig** is used for advanced troubleshooting, especially startup issues.
 
+**Open it:** Start Menu → search `msconfig`  
+(Requires Administrator rights)
 
+**Tabs:**
 
+| Tab | Purpose |
+|-----|---------|
+| **General** | Choose Normal, Diagnostic, or Selective startup |
+| **Boot** | Configure boot options |
+| **Services** | View and manage system services |
+| **Startup** | Startup items (managed better in Task Manager on client OS) |
+| **Tools** | Launch useful system utilities |
 
+**Note:** On Windows Server, startup programs are best viewed via:
+`shell:startup`
 
+---
 
+#### Advanced System Settings
 
+Search for **View advanced system settings**.
 
+Useful options:
+- **Performance Settings** → Configure virtual memory (page file)
+- **Startup and Recovery** → Configure crash dump settings
 
+**Common crash dump types:**
+- Automatic memory dump
+- Kernel memory dump
+- Small memory dump
+- Complete memory dump
 
+---
+
+#### User Account Control (UAC) Settings
+
+UAC controls how Windows notifies you when apps try to make system changes.
+
+**Four levels:**
+
+| Level | Behavior |
+|-------|----------|
+| Always notify | Highest security (screen dims) |
+| Notify for apps only | Default setting |
+| Notify without dimming | Same as above, no dimming |
+| Never notify | UAC turned off (not recommended) |
+
+---
+
+#### Computer Management
+
+Open with: `compmgmt.msc`
+
+**Main sections:**
+
+**System Tools**
+- **Task Scheduler** — Schedule programs/scripts to run automatically
+- **Event Viewer** — View system, security, and application logs
+- **Shared Folders** — View shares, sessions, and open files
+- **Local Users and Groups** — Manage users and groups (`lusrmgr.msc`)
+- **Performance Monitor** — Analyze system performance
+- **Device Manager** — View and manage hardware
+
+**Storage**
+- **Disk Management** — Create, shrink, extend partitions and assign drive letters
+
+**Services and Applications**
+- View and manage Windows services
+- Configure **WMI** (Windows Management Instrumentation)
+
+**Service Startup Types:**
+- Automatic
+- Manual
+- Disabled
+
+---
+
+#### System Information (`msinfo32`)
+
+Provides a detailed overview of the system.
+
+**Sections:**
+- **System Summary** — General hardware and OS info
+- **Hardware Resources**
+- **Components** — Installed devices
+- **Software Environment** — Drivers, environment variables, network connections, etc.
+
+Useful for troubleshooting and gathering system details.
+
+---
+
+#### Resource Monitor (`resmon`)
+
+Shows real-time usage of:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+Useful for finding which process is using resources or locking files.
+
+---
+
+#### Command Prompt Basics
+
+| Command | Purpose |
+|---------|---------|
+| `hostname` | Show computer name |
+| `whoami` | Show current user |
+| `ipconfig` | Show network configuration |
+| `ipconfig /?` | Help for a command |
+| `netstat` | Show network connections |
+| `net user` | Manage user accounts |
+| `cls` | Clear the screen |
+
+**Useful net commands:**
+```bash
+net user
+net localgroup
+net share
+net session
+```
+
+**Registry Editor**
+(`regedit`)
+
+The Windows Registry is a hierarchical database that stores system and application configuration settings.
+
+It contains information about:
+- User profiles
+- Installed applications
+- Hardware
+- System settings
+
+Warning: Making incorrect changes to the registry can break the system. Only advanced users should edit it.
 
 ---
 
