@@ -7,7 +7,7 @@ You can view my TryHackMe Badges here -> [Badges](https://tryhackme.com/p/Wicked
 ---
 
 <details>
-<summary><strong>Module 1 - Finished</strong></summary>
+<summary><strong>Module 1: Start You Cyber Security Journey - Finished</strong></summary>
 
 ---
 
@@ -153,7 +153,7 @@ It helps determine whether a file or website is malicious.
 
 
 <details>
-<summary><strong>Module 2 - Finished</strong></summary>
+<summary><strong>Module 2: Linux Foundamentals - Finished</strong></summary>
 
 ---
 
@@ -551,7 +551,7 @@ Two common types:
 
 
 <details>
-<summary><strong>Module 3 - Currently in Progress</strong></summary>
+<summary><strong>Module 3: Windows and AD Fundamentals - Finished</strong></summary>
 
 ---
 
@@ -1039,51 +1039,136 @@ Attackers often abuse legitimate Windows tools (**Living Off The Land**) to avoi
 ### Room 4 - Active Directory Basics
 
 **Learning Objectives**
-- Coming soon
+- Explain what Active Directory and a Windows Domain are
+- Identify key AD objects (users, machines, groups, OUs)
+- Manage users and computers in Active Directory
+- Understand Group Policy Objects (GPOs)
+- Describe Kerberos and NetNTLM authentication
+- Explain trees, forests, and trust relationships
 
-*Notes coming soon*
+---
 
+#### What is a Windows Domain?
 
+A **Windows Domain** is a group of users and computers managed centrally by a business.
 
+**Active Directory (AD)** is the central repository that stores information about the network.  
+The server that runs Active Directory is called a **Domain Controller (DC)**.
 
+**Main advantages:**
+- Centralized identity management
+- Centralized security policy management
 
+---
 
+#### Active Directory Objects
 
+| Object Type | Description |
+|-------------|-------------|
+| **Users** | People or service accounts that can authenticate and be given permissions |
+| **Machines** | Computer accounts (name ends with `$`, e.g., `DC01$`) |
+| **Security Groups** | Used to grant permissions to resources |
 
+**Important Default Groups:**
 
+| Group | Purpose |
+|-------|---------|
+| Domain Admins | Full administrative rights over the domain |
+| Server Operators | Can administer Domain Controllers |
+| Backup Operators | Can access any file for backup purposes |
+| Account Operators | Can create and modify accounts |
+| Domain Users | All user accounts in the domain |
+| Domain Computers | All computers in the domain |
+| Domain Controllers | All Domain Controllers |
 
+---
 
+#### Organizational Units (OUs) vs Security Groups
 
+| Feature | Organizational Units (OUs) | Security Groups |
+|---------|---------------------------|-----------------|
+| Main purpose | Apply policies | Grant permissions to resources |
+| Membership | A user can only be in **one OU** | A user can be in **many groups** |
+| Typical use | Department structure (Sales, IT, etc.) | Access to shares, printers, etc. |
 
+---
 
+#### Managing Users in AD
 
+Tool: **Active Directory Users and Computers**
 
+Common tasks:
+- Create / delete users
+- Reset passwords
+- Organize users into OUs
 
+**Delegation**  
+You can give limited permissions (e.g., password reset) to specific users over certain OUs without making them Domain Admins.
 
+---
 
+#### Managing Computers in AD
 
+By default, machines join the **Computers** container.  
+Best practice is to organize them into OUs such as:
 
+- Workstations
+- Servers
+- Domain Controllers (already separated by default)
 
+This allows different policies for different types of devices.
 
+---
 
+#### Group Policy Objects (GPOs)
 
+**GPOs** are collections of settings that can be applied to users or computers.
 
+**Key points:**
+- Created under **Group Policy Objects**
+- Linked to OUs (or the domain)
+- Apply to the linked OU and all sub-OUs
+- Distributed via the **SYSVOL** share
 
+**Force policy update:**
+```powershell
+gpupdate /force
+```
 
+**Common examples:**
+- Restrict Control Panel access
+- Auto-lock screen after inactivity
+- Password policies
 
+---
 
+#### Authentication Methods
 
+**Kerberos (default modern protocol)
+1. User authenticates to the Key Distribution Center (KDC) and receives a TGT
+2. User uses the TGT to request a TGS for a specific service
+3. User presents the TGS to the service to gain access
 
+**NetNTLM (legacy)**  
+Uses a challenge-response mechanism.
 
+The password (or hash) is never sent over the network.
 
+---
 
+#### Trees, Forests, and Trusts
 
+| **Term** | **Meaning**                                                                           |
+|----------|---------------------------------------------------------------------------------------|
+| Tree     | Multiple domains that share the same namespace (e.g., `uk.thm.local`, `us.thm.local`) |
+| Forest   | Collection of multiple trees (different namespaces)                                   |
+| Trust    | Allows users from one domain to access resources in another                           |
 
+**Trust types:**
+- One-way trust — Access flows in one direction
+- Two-way trust — Mutual access (default when domains are joined in a tree/forest)
 
-
-
-
-
+Having a trust does not automatically grant access — permissions must still be assigned.
 
 
 ---
@@ -1117,6 +1202,17 @@ Attackers often abuse legitimate Windows tools (**Living Off The Land**) to avoi
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
 <!--
 ***********************************************************************
 ***********************************************************************
@@ -1125,11 +1221,52 @@ Attackers often abuse legitimate Windows tools (**Living Off The Land**) to avoi
 ***********************************************************************
 -->
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><strong>Module 4</strong></summary>
+<summary><strong>Module 4: Command Line - Currently in Progress</strong></summary>
 
+---
 
+<details> <!-- Starts Room 1-->
+<summary><strong>Room 1 - Windows Command Line</strong></summary>
 
+---
+
+*Notes to Come*
+  
+</details> <!-- Ends Room 1-->
+
+---
+
+<details> <!-- Starts Room 2-->
+<summary><strong>Room 2 - Windows PowerShell</strong></summary>
+
+---
+
+*Notes to Come*
+  
+</details> <!-- Ends Room 2-->
+
+---
+
+<details> <!-- Starts Room 3-->
+<summary><strong>Room 3 - Linux Shells</strong></summary>
+
+---
+
+*Notes to Come*
+  
+</details> <!-- Ends Room 3-->
 
 
 
