@@ -1177,22 +1177,6 @@ Having a trust does not automatically grant access — permissions must still be
 
 </details> <!-- End of Room 4 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 **End of Module 3**
@@ -1242,8 +1226,109 @@ Having a trust does not automatically grant access — permissions must still be
 
 ---
 
-*Notes to Come*
-  
+**Learning Objectives**
+- Display basic system information
+- Check and troubleshoot network configuration
+- Manage files and folders
+- View and manage running processes
+
+---
+
+#### Why Use the Command Line?
+
+Advantages of the CLI:
+- Faster and more efficient once learned
+- Lower resource usage
+- Easier automation with scripts
+- Better for remote management (especially over SSH)
+
+---
+
+#### Basic System Information
+
+| Command | Purpose |
+|---------|---------|
+| `ver` | Show Windows version |
+| `systeminfo` | Detailed system information (OS, hardware, memory, etc.) |
+| `set` | Display environment variables (including the system `Path`) |
+| `cls` | Clear the screen |
+| `help` | Show help for a command |
+
+**Tip:** Pipe long output through `more` to view it page by page:  
+```cmd
+driverquery | more
+```
+
+---
+
+#### Network Troubleshooting
+
+| **Command**         | **Purpose**                                                    |
+|---------------------|----------------------------------------------------------------|
+| `ipconfig`          | Show basic network configuration                               |
+| `ipconfig /all`     | Show detailed network configuration (DNS, DHCP, MAC, etc.)     |
+| `ping <target>`	    | Test connectivity to a host                                    |
+| `tracert <target>`  | Trace the route to a host                                      |
+| `nslookup <domain>` | Look up IP address of a domain                                 |
+| `netstat`           | Show current network connections                               |
+| `netstat -abon`	    | Show all connections, listening ports, process names, and PIDs |
+
+
+**Useful netstat options:**
+- `-a` → All connections and listening ports
+- `-b` → Show the executable name
+- `-o` → Show Process ID (PID)
+- `-n` → Show numerical addresses and ports
+
+---
+
+#### File and Directory Management
+
+**Directory commands:**  
+| **Command**    | **Purpose**                                |
+|----------------|--------------------------------------------|
+| `cd`           | Show current directory or change directory |
+| `cd ..`	       | Go up one level                            |
+| `dir`	         | List files and folders                     |
+| `dir /a`       | Include hidden and system files            |
+| `dir /s`       | Include subdirectories                     |
+| `tree`         | Show directory structure visually          |
+| `mkdir <name>` | Create a directory                         |
+| `rmdir <name>` | Remove an empty directory                  |
+
+**File commands:**  
+| **Command**                    | **Purpose**                        |
+|--------------------------------|------------------------------------|
+| `type <file>`                  | Display contents of a text file    |
+| `more <file>`                  | View a long text file page by page |
+| `copy <source> <destination>`  | Copy a file                        |
+| `move <source> <destination>`  | Move or rename a file              |
+| `del <file>` or `erase <file>` | Delete a file                      |
+
+**Wildcard:**  
+**Use `*` to match multiple files (e.g., `copy *.txt C:\backup`)**
+
+---
+
+#### Process Management
+
+| **Command**                            | **Purpose**                |
+|----------------------------------------|----------------------------|
+| `tasklist`                             | List running processes     |
+| `tasklist /FI "imagename eq sshd.exe"` |Filter processes by name    |
+| `taskkill /PID <number>`               | Terminate a process by PID |
+
+---
+
+#### Extra Useful Commands
+
+| **Command**    | **Purpse**                   |
+|----------------|------------------------------|
+| `chkdsk`       | Check disk for errors        |
+| `driverquery`  | List installed drivers       |
+| `sfc /scannow` | Scan and repair system files |
+
+
 </details> <!-- Ends Room 1-->
 
 ---
