@@ -1225,9 +1225,9 @@ Having a trust does not automatically grant access — permissions must still be
 <details> <!-- Starts Room 1-->
 <summary><strong>Room 1 - Windows Command Line</strong></summary>
 
-### Room 1 - Windows Command Line
-
 ---
+
+### Room 1 - Windows Command Line
 
 **Learning Objectives**
 - Display basic system information
@@ -1338,6 +1338,8 @@ driverquery | more
 
 <details> <!-- Starts Room 2-->
 <summary><strong>Room 2 - Windows PowerShell</strong></summary>
+
+---
 
 ### Room 2 - Windows PowerShell
 
