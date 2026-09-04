@@ -160,7 +160,10 @@ It helps determine whether a file or website is malicious.
 <details>
 <summary><strong>Room 1 - Linux Fundamentals Part 1</strong></summary>
 
+
 ---
+
+### Room 1 - Linux Fundamentals Part 1 
 
 **Learning Objectives**
 - Understand where Linux is commonly used
@@ -168,8 +171,6 @@ It helps determine whether a file or website is malicious.
 - Practice basic file and text operations
 
 ---
-
-### Room 1 - Linux Fundamentals Part 1 
 
 #### Where is Linux Used?
 
@@ -1224,6 +1225,8 @@ Having a trust does not automatically grant access — permissions must still be
 <details> <!-- Starts Room 1-->
 <summary><strong>Room 1 - Windows Command Line</strong></summary>
 
+### Room 1 - Windows Command Line
+
 ---
 
 **Learning Objectives**
@@ -1336,9 +1339,145 @@ driverquery | more
 <details> <!-- Starts Room 2-->
 <summary><strong>Room 2 - Windows PowerShell</strong></summary>
 
+### Room 2 - Windows PowerShell
+
+**Learning Objectives**
+- Understand what PowerShell is and why it is powerful
+- Learn the basic Verb-Noun cmdlet structure
+- Navigate the file system and work with files
+- Use piping, filtering, and sorting
+- Gather system and network information
+- Perform basic real-time system analysis
+
 ---
 
-*Notes to Come*
+#### What is PowerShell?
+
+PowerShell is a **command-line shell**, **scripting language**, and **configuration management framework** built on the .NET framework.
+
+**Key difference from Command Prompt:**  
+PowerShell works with **objects** (data + properties + methods) instead of plain text. This makes it much more powerful for automation and data manipulation.
+
+---
+
+#### Basic Syntax: Verb-Noun
+
+PowerShell commands are called **cmdlets** and follow a consistent naming pattern:
+
+| Verb | Noun | Example |
+|------|------|---------|
+| Get | Content | `Get-Content` |
+| Set | Location | `Set-Location` |
+| New | Item | `New-Item` |
+| Remove | Item | `Remove-Item` |
+
+**Essential discovery cmdlets:**
+
+| Cmdlet | Purpose |
+|--------|---------|
+| `Get-Command` | List available commands |
+| `Get-Help <cmdlet>` | Show help for a command |
+| `Get-Alias` | List command aliases |
+| `Get-Help <cmdlet> -Examples` | Show usage examples |
+
+**Common aliases:**
+- `dir` / `ls` → `Get-ChildItem`
+- `cd` → `Set-Location`
+- `cat` / `type` → `Get-Content`
+- `clear` → `Clear-Host`
+
+---
+
+#### Navigating the File System
+
+| Cmdlet | Purpose | Traditional Equivalent |
+|--------|---------|------------------------|
+| `Get-ChildItem` | List files and folders | `dir` / `ls` |
+| `Set-Location` | Change directory | `cd` |
+| `New-Item` | Create file or folder | `mkdir` / `echo` |
+| `Remove-Item` | Delete file or folder | `del` / `rmdir` |
+| `Copy-Item` | Copy file or folder | `copy` |
+| `Move-Item` | Move or rename | `move` |
+| `Get-Content` | Read file contents | `type` / `cat` |
+
+**Examples:**
+```powershell
+Get-ChildItem
+Set-Location -Path ".\Documents"
+New-Item -Path ".\notes.txt" -ItemType "File"
+Get-Content -Path ".\notes.txt"
+```
+
+---
+
+#### Piping, Filtering, and Sorting
+
+PowerShell pipes objects, not just text.
+
+**Common pipeline cmdlets:**
+
+| **Cmdlet**      | **Purpose**                          |
+|-----------------|--------------------------------------|
+| `Sort-Object`   | Sort results                         |
+| `Where-Object`  | Filter results                       |
+| `Select-Object` | Select specific properties           |
+| `Select-String` | Search for text patterns (like grep) |
+
+**Useful comparison operators:**
+- `-eq` → equal to
+- `-ne` → not equal to
+- `-gt` / `-ge` → greater than / greater than or equal
+- `-lt` / `-le` → less than / less than or equal
+- `-like` → pattern match
+
+**Examples:**
+
+``` PowerShell
+# List only .txt files
+Get-ChildItem | Where-Object -Property Extension -eq ".txt"
+
+# Sort files by size
+Get-ChildItem | Sort-Object Length
+
+# Show only Name and Length
+Get-ChildItem | Select-Object Name, Length
+
+# Find the largest file
+Get-ChildItem | Sort-Object Length -Descending | Select-Object -First 1
+
+```
+
+---
+
+#### System and Network information
+| **Cmdlet**               | **Purpose**                 |
+|--------------------------|-----------------------------|
+| `Get-ComputerInfo`       | Detailed system information |
+| `Get-LocalUser`          | List local user accounts    |
+| `Get-NetIPConfiguration` | Network interface details   |
+| `Get-NetIPAddress`       | IP address information      |
+
+---
+
+#### Real-Time System Analysis
+
+| **Cmdlet**             | **Purpose**                                        |
+|------------------------|----------------------------------------------------|
+| `Get-Process`          | List running processes                             |
+| `Get-Service`          | List services and their status                     |
+| `Get-NetTCPConnection` | Show active TCP connections                        |
+| `Get-FileHash`         | Generate file hashes (useful for integrity checks) |
+
+**View Alternate Data Streams (ADS):**
+``` PowerShell
+Get-Item -Path "C:\path\to\file.txt" -Stream *
+```
+
+This allows you to run commands or scripts on remote systems.
+
+---
+
+**End of Room 2**
   
 </details> <!-- Ends Room 2-->
 
