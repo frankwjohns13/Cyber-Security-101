@@ -1218,7 +1218,7 @@ Having a trust does not automatically grant access — permissions must still be
 
 
 <details>
-<summary><strong>Module 4: Command Line - Currently in Progress</strong></summary>
+<summary><strong>Module 4: Command Line - Finished</strong></summary>
 
 ---
 
@@ -1488,9 +1488,178 @@ This allows you to run commands or scripts on remote systems.
 <details> <!-- Starts Room 3-->
 <summary><strong>Room 3 - Linux Shells</strong></summary>
 
+### Room 3 - Linux Shells
+
+**Learning Objectives**
+- Interact with a Linux shell
+- Use basic shell commands
+- Understand the main types of Linux shells
+- Write simple shell scripts using variables, loops, and conditionals
+
 ---
 
-*Notes to Come*
+#### Basic Shell Interaction
+
+| Command | Purpose |
+|---------|---------|
+| `pwd` | Print current working directory |
+| `cd <directory>` | Change directory |
+| `ls` | List directory contents |
+| `cat <file>` | Display file contents |
+| `grep <pattern> <file>` | Search for a pattern inside a file |
+
+**Examples:**
+```bash
+pwd
+cd Desktop
+ls
+cat filename.txt
+grep THM dictionary.txt
+```
+
+---
+
+#### Types of Linux Shells
+
+**Check your current shell:**
+
+```Bash
+echo $SHELL
+```
+
+**List available shells:**
+
+```Bash
+cat /etc/shells
+```
+
+**Switch to another shell:**
+
+```Bash
+zsh
+```
+
+**Common shells:**  
+
+| **Shell** | **Full Name**              | **Key Features**                                                         |
+|-----------|----------------------------|--------------------------------------------------------------------------|
+| Bash      | Bourne Again Shell         | Default on most systems, good scripting, tab completion, command history | 
+| Fish      | Friendly Interactive Shell | Very user-friendly, auto-suggestions, syntax highlighting                |
+| Zsh       | Z Shell                    | Highly customizable, advanced tab completion, plugins (oh-my-zsh)        |
+
+---
+
+#### Shell Scripting Basics
+
+A shell script is a file containing a series of commands.
+
+Scripts usually end with `.sh`.
+
+**Shebang (first line of every script):**
+
+```Bash
+#!/bin/bash
+```
+
+**Make a script executable:**
+
+```Bash
+chmod +x script_name.sh
+```
+
+**Run the script:**
+
+```Bash
+./script_name.sh
+```
+
+---
+
+#### Script Components
+
+1. Variables
+```Bash
+#!/bin/bash
+echo "What is your name?"
+read name
+echo "Welcome, $name"
+```
+
+2. Loops
+```Bash
+#!/bin/bash
+for i in {1..10}; do
+  echo $i
+done
+```
+
+3. Conditional Statements
+```Bash
+#!/bin/bash
+echo "Enter your name:"
+read name
+
+if [ "$name" = "Stewart" ]; then
+  echo "Welcome Stewart! Here is the secret: THM_Script"
+else
+  echo "Sorry! You are not authorized."
+fi
+```
+
+4. Comments
+```Bash
+# This is a comment
+```
+
+---
+
+#### Example: Locker Script
+
+A simple authentication script that checks username, company, and PIN.
+
+```Bash
+#!/bin/bash
+
+username=""
+companyname=""
+pin=""
+
+for i in {1..3}; do
+  if [ "$i" -eq 1 ]; then
+    echo "Enter your Username:"
+    read username
+  elif [ "$i" -eq 2 ]; then
+    echo "Enter your Company name:"
+    read companyname
+  else
+    echo "Enter your PIN:"
+    read pin
+  fi
+done
+
+if [ "$username" = "John" ] && [ "$companyname" = "Tryhackme" ] && [ "$pin" = "7385" ]; then
+  echo "Authentication Successful. You can now access your locker, John."
+else
+  echo "Authentication Denied!!"
+fi
+```
+
+---
+
+Practical Notes
+
+Always start scripts with the correct shebang (`#!/bin/bash`)
+- Give execution permission with `chmod +x`
+- Use variables to store values
+- Use loops for repetitive tasks
+- Use `if` statements for decision-making
+- Add comments to make scripts easier to understand
+
+
+---
+
+***End of Room 3**
+
   
 </details> <!-- Ends Room 3-->
 
@@ -1533,7 +1702,77 @@ This allows you to run commands or scripts on remote systems.
 -->
 
 <details>
-<summary><strong>Module 5</strong></summary>
+<summary><strong>Module 5: Networking - Currently Working On</strong></summary>
+
+---
+
+<details>
+<summary><strong>Room 1 - Networking Concepts</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 1 -->
+
+---
+
+<details>
+<summary><strong>Room 2 - Networking Essentials</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 2 -->
+
+---
+
+<details>
+<summary><strong>Room 3 - Networking Core Protocols</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 3 -->
+
+---
+
+<details>
+<summary><strong>Room 4 - Networking Secure Protocols</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 4 -->
+
+---
+
+<details>
+<summary><strong>Room 5 - Wireshark: The Basics</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 5 -->
+
+---
+
+<details>
+<summary><strong>Room 6 - Tcpdump: The Basics</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 6 -->
+
+---
+
+<details>
+<summary><strong>Room 7 - Namp: The Basics</strong></summary>
+
+  *Notes to come*
+  
+</details> <!-- End Room 7 -->
+
+---
+
+
+
+
+
 
 
 
