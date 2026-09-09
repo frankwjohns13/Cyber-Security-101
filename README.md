@@ -1701,6 +1701,18 @@ Always start scripts with the correct shebang (`#!/bin/bash`)
 ***********************************************************************
 -->
 
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><strong>Module 5: Networking - Currently Working On</strong></summary>
 
@@ -1709,8 +1721,115 @@ Always start scripts with the correct shebang (`#!/bin/bash`)
 <details>
 <summary><strong>Room 1 - Networking Concepts</strong></summary>
 
-  *Notes to come*
-  
+### Room 1 - Networking Concepts
+
+**Learning Objectives**
+- Understand the OSI and TCP/IP models
+- Explain IP addresses, subnets, and routing
+- Differentiate between TCP and UDP
+- Understand encapsulation
+- Connect to open TCP ports using Telnet
+
+---
+
+#### OSI Model (7 Layers)
+
+| Layer | Name | Main Function | Examples |
+|-------|------|---------------|----------|
+| 7 | Application | Services for applications | HTTP, FTP, DNS, SMTP, IMAP |
+| 6 | Presentation | Encoding, encryption, compression | JPEG, PNG, MIME, Unicode |
+| 5 | Session | Establish and manage sessions | NFS, RPC |
+| 4 | Transport | End-to-end communication | TCP, UDP |
+| 3 | Network | Logical addressing and routing | IP, ICMP, IPSec |
+| 2 | Data Link | Data transfer between nodes on the same network | Ethernet, Wi-Fi (MAC addresses) |
+| 1 | Physical | Physical transmission medium | Cables, radio signals |
+
+**Mnemonic (bottom to top):**  
+**Please Do Not Throw Spinach Pizza Away**
+
+---
+
+#### TCP/IP Model
+
+| TCP/IP Layer | OSI Layers Covered | Protocols |
+|--------------|--------------------|-----------|
+| Application | 5, 6, 7 | HTTP, HTTPS, FTP, DNS, SSH |
+| Transport | 4 | TCP, UDP |
+| Internet | 3 | IP, ICMP |
+| Link | 1, 2 | Ethernet, Wi-Fi |
+
+---
+
+#### IP Addresses and Subnets
+
+An **IPv4 address** is made of 4 octets (32 bits), e.g. `192.168.1.10`.
+
+**Private IP ranges (RFC 1918):**
+- `10.0.0.0 – 10.255.255.255`
+- `172.16.0.0 – 172.31.255.255`
+- `192.168.0.0 – 192.168.255.255`
+
+**Useful commands:**
+```bash
+ipconfig          # Windows
+ifconfig          # Linux
+ip a s            # Linux (modern)
+```
+**Subnet mask example:**  
+`255.255.255.0 = /24
+
+---
+
+#### TCP Three-Way-Handshake:
+
+1. SYN
+2. SYN-ACK
+3. ACK
+
+Port numbers range from **1 to 65535.**
+
+---
+
+#### Encapsulation
+
+Each layer adds its own header (and sometimes trailer):
+
+```text
+Application Data
+→ TCP Segment / UDP Datagram
+→ IP Packet
+→ Ethernet / Wi-Fi Frame
+```
+
+On the receiving end, the process is reversed.
+
+---
+
+**Telnet (Testing Open Ports)**
+
+```Bash
+telnet <IP> <port>
+```
+
+**Examples:**
+```Bash
+telnet MACHINE_IP 7      # Echo server
+telnet MACHINE_IP 13     # Daytime server
+telnet MACHINE_IP 80     # Web server
+```
+
+**For HTTP:**
+```text
+GET / HTTP/1.1
+Host: example.com
+```
+(Press Enter twice)
+
+---
+
+**End of Room 1**
+
+
 </details> <!-- End Room 1 -->
 
 ---
