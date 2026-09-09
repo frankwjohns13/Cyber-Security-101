@@ -1837,7 +1837,114 @@ Host: example.com
 <details>
 <summary><strong>Room 2 - Networking Essentials</strong></summary>
 
-  *Notes to come*
+### Room 2 - Networking Essentials
+
+**Learning Objectives**
+- Understand how DHCP automatically configures network settings
+- Explain how ARP maps IP addresses to MAC addresses
+- Use ICMP tools (ping and traceroute) for troubleshooting
+- Understand basic routing concepts
+- Explain how NAT allows multiple devices to share one public IP
+
+---
+
+#### DHCP – Dynamic Host Configuration Protocol
+
+DHCP automatically assigns network settings to devices when they join a network.
+
+**Required settings a device needs:**
+- IP address + subnet mask
+- Default gateway (router)
+- DNS server
+
+**DHCP uses the DORA process:**
+
+| Step | Message | Description |
+|------|---------|-------------|
+| 1 | **Discover** | Client broadcasts looking for a DHCP server |
+| 2 | **Offer** | Server offers an available IP address |
+| 3 | **Request** | Client requests the offered IP |
+| 4 | **Acknowledge** | Server confirms the IP is assigned |
+
+- Server listens on **UDP port 67**
+- Client sends from **UDP port 68**
+
+At the end of the process, the device receives:
+- Leased IP address
+- Gateway address
+- DNS server address
+
+---
+
+#### ARP – Address Resolution Protocol
+
+ARP translates a **Layer 3 IP address** into a **Layer 2 MAC address**.
+
+**How it works:**
+1. Device sends an **ARP Request**: “Who has IP 192.168.1.1?”
+2. The device that owns that IP replies with an **ARP Reply** containing its MAC address.
+
+ARP messages are sent directly inside Ethernet frames (not inside IP or UDP).
+
+---
+
+#### ICMP – Internet Control Message Protocol
+
+ICMP is used for network diagnostics and error reporting.
+
+##### Ping
+Tests connectivity and measures round-trip time.
+
+```bash
+ping <target>
+ping <target> -c 4          # Linux (send 4 packets)
+```
+
+- Sends ICMP Echo Request (Type 8)
+- Receives ICMP Echo Reply (Type 0)
+
+**Traceroute**  
+Shows the path packets take to reach a destination.
+
+```bash
+traceroute <target>         # Linux / macOS
+tracert <target>            # Windows
+```
+
+It works by increasing the TTL (Time-To-Live) value and waiting for ICMP Time Exceeded messages from each router.
+
+---
+
+#### Routing
+
+Routers forward packets toward their destination using routing tables and routing protocols.  
+
+**Common routing protocols:**
+
+| **Protocol** | **Full Name**                              | **Notes**                                        |
+|--------------|--------------------------------------------|--------------------------------------------------|
+| OSPF         | Open Shortest Path First                   | Builds a map of the network and finds best paths |
+| EIGRP        | Enhanced Interior Gateway Routing Protocol | Cisco proprietary                                |
+| BGP          | Border Gateway Protocol                    | Main routing protocol of the Internet            |
+| RIP          | Routing Information Protocol               | Simple, uses hop count (older)                   |
+
+---
+
+#### NAT - Network Address Translation
+
+NAT allows many devices with private IP addresses to share one (or a few) public IP addresses.
+
+How it works:
+- Devices inside the network use private IPs (e.g. 192.168.x.x)
+- The router translates the private IP + port to its public IP + a different port
+- The router keeps a translation table so return traffic reaches the correct internal device
+
+This is why your entire home network can access the internet with a single public IP from your ISP.
+
+---
+
+End of Room 2
+
   
 </details> <!-- End Room 2 -->
 
@@ -1847,6 +1954,45 @@ Host: example.com
 <summary><strong>Room 3 - Networking Core Protocols</strong></summary>
 
   *Notes to come*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 </details> <!-- End Room 3 -->
 
