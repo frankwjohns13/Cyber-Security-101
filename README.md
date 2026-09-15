@@ -1953,44 +1953,164 @@ End of Room 2
 <details>
 <summary><strong>Room 3 - Networking Core Protocols</strong></summary>
 
-  *Notes to come*
+### Room 3 - Networking Core Protocols
+
+**Learning Objectives**
+- Understand DNS and common record types
+- Use WHOIS to look up domain registration information
+- Explain HTTP/HTTPS methods
+- Transfer files with FTP
+- Send and receive email using SMTP, POP3, and IMAP
+
+---
+
+#### DNS – Domain Name System
+
+DNS maps domain names to IP addresses.  
+It operates at **Layer 7** and normally uses **UDP port 53** (falls back to TCP 53).
+
+**Common DNS Record Types:**
+
+| Record | Purpose |
+|--------|---------|
+| **A** | Maps a hostname to an IPv4 address |
+| **AAAA** | Maps a hostname to an IPv6 address |
+| **CNAME** | Maps a domain name to another domain name |
+| **MX** | Specifies the mail server for a domain |
+
+**Lookup-line lookup:**
+```bash
+nslookup www.example.com
+```
+
+---
+
+**WHOIS**  
+WHOIS shows registration information for a domain (owner, registrar, creation date, contact details, etc.).
+
+```bash
+whois example.com
+```
+
+Many domains use privacy protection, so personal contact details may be hidden.
+
+---
+
+#### HTTP/HTTPS
+
+HTTP(and HTTPS) is the protocol used by web browsers to communicate with web servers.
+
+**Common Methods**
+
+| **Method** | **Purpose** |
+|------------|-------------|
+| **GET**    | Retrieve data (pages, images, etc.) |
+| **POST**   | Submits new data (forms, uploads)   |
+| **PUT**    | Create or overwrite a resource      |
+| **DELETE** | Delete a resource                   |
+
+- HTTP→ TCP port 80
+- HTTPS → TCP port 443
+
+You can still talk to a web server manually with Telnet:
+
+```bash
+telnet MACHINE_IP 80
+GET / HTTP/1.1
+Host: example.com
+```
+**(Press Enter Twice)**
+
+---
+
+#### FTP – File Transfer Protocol
+
+FTP is designed specifically for transferring files.
+
+**Common commands:**
+- `USER` – username
+- `PASS` – password
+- `RETR` – download a file
+- `STOR` – upload a file
+- `LIST` / `ls` – list files
+
+Default port: **TCP 21**
+
+**Example session:**
+
+```bash
+ftp MACHINE_IP
+# login as anonymous (or with credentials)
+ls
+get filename.txt
+quit
+```
+
+---
+
+#### Email Protocols
 
 
+| **Protocol** | **Purpose**                                     | **Default Port** |
+|--------------|-------------------------------------------------|------------------|
+| SMTP         | Sending email                                   | TCP 25           |
+| POP3         | Downloading email (usually deletes from server) | TCP 110          |
+| IMAP         | Synchronizing email across devices              | TCP 143          |
 
+**SMTP (Sending)**
 
+```bash
+telnet MACHINE_IP 25
+HELO client.thm
+MAIL FROM: <user@client.thm>
+RCPT TO: <someone@server.thm>
+DATA
+Subject: Test
+Hello!
+.
+QUIT
+```
 
+**POP3 (Receiving**
 
+```bash
+telnet MACHINE_IP 110
+USER username
+PASS password
+STAT
+LIST
+RETR 1
+QUIT
+```
 
+**IMAP (Synchronizing)**
 
+```bash
+telnet MACHINE_IP 143
+A LOGIN username password
+B SELECT inbox
+C FETCH 1 body[]
+D LOGOUT
+```
 
+---
 
+#### Quick Port Reference
 
+| **Protocol** | **Port** |
+|--------------|:--------:|
+| TELNET       | 23       |
+| DNS          | 53       |
+| HTTP         | 80       |
+| HTTPS        | 443      |
+| FTP          | 21       |
+| SMTP         | 25       |
+| POP3         | 110      |
+| IMAP         | 143      |
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**End of Room 3**
 
 
   
