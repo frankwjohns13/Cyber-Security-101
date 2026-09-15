@@ -2009,7 +2009,7 @@ HTTP(and HTTPS) is the protocol used by web browsers to communicate with web ser
 | **PUT**    | Create or overwrite a resource      |
 | **DELETE** | Delete a resource                   |
 
-- HTTP→ TCP port 80
+- HTTP → TCP port 80
 - HTTPS → TCP port 443
 
 You can still talk to a web server manually with Telnet:
