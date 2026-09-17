@@ -2121,7 +2121,122 @@ D LOGOUT
 <details>
 <summary><strong>Room 4 - Networking Secure Protocols</strong></summary>
 
-  *Notes to come*
+ ### Room 4 - Networking Secure Protocols
+
+**Learning Objectives**
+- Understand TLS and how it secures existing protocols
+- Explain HTTPS, SMTPS, POP3S, and IMAPS
+- Describe SSH and how it replaced Telnet
+- Differentiate SFTP and FTPS
+- Understand how VPNs create secure connections over the Internet
+
+---
+
+#### TLS (Transport Layer Security)
+
+TLS is a cryptographic protocol that provides:
+- **Confidentiality** — data cannot be read by others
+- **Integrity** — data cannot be modified unnoticed
+- **Authenticity** — you are talking to the real server
+
+It evolved from **SSL** (Secure Sockets Layer).  
+Current version: **TLS 1.3**.
+
+**How certificates work:**
+1. Server creates a Certificate Signing Request (CSR)
+2. Certificate Authority (CA) verifies and signs it
+3. Signed certificate is used to prove the server’s identity
+
+**Self-signed certificates** should **not** be used to confirm authenticity (no trusted third party).
+
+---
+
+#### Securing Existing Protocols with TLS
+
+Adding TLS turns plaintext protocols into secure versions (the “S” stands for Secure).
+
+| Original Protocol | Secure Version | Default Port |
+|-------------------|----------------|--------------|
+| HTTP | HTTPS | 443 |
+| SMTP | SMTPS | 465 / 587 |
+| POP3 | POP3S | 995 |
+| IMAP | IMAPS | 993 |
+
+**HTTPS process (simplified):**
+1. TCP three-way handshake
+2. TLS handshake / session establishment
+3. HTTP communication (now encrypted)
+
+Once TLS is active, the traffic appears as “Application Data” in Wireshark and cannot be read without the decryption key.
+
+---
+
+#### SSH – Secure Shell
+
+SSH replaced the insecure **Telnet** protocol.
+
+- Default port: **22**
+- Open-source implementation: **OpenSSH**
+
+**Key benefits:**
+- Secure authentication (passwords, public keys, 2FA)
+- End-to-end encryption
+- Integrity protection
+- Tunneling (can carry other protocols)
+- X11 forwarding (run graphical apps remotely)
+
+**Basic connection:**
+```bash
+ssh username@hostname
+ssh hostname          # if username matches your local user
+ssh hostname -X       # enable graphical applications
+```
+
+---
+
+#### SFTP vs FTPS
+
+| **Protocol** | **Full Name**                 | **Based On** | **Port** | **Notes**                        |
+|--------------|-------------------------------|--------------|----------|----------------------------------|
+| SFTP         | SSH File Transfer Protocol    | SSH          | 22       | Easy to set up (part of OpenSSH) |
+| FTPS         | File Transfer Protocol Secure | FTP + TLS    | 990      | Requires TLS certificates        |
+
+**SFTP example:**
+```bash
+sftp username@hostname
+get filename
+put filename
+```
+
+---
+
+#### VPN – Virtual Private Network
+
+A VPN creates a secure, encrypted tunnel over an insecure network (usually the Internet).
+Common uses:
+- Connect remote company offices to the main branch
+- Allow remote employees secure access to internal resources
+- Bypass geographic restrictions
+- Encrypt traffic so the local ISP cannot see content
+
+Once connected, traffic is usually routed through the VPN server (you appear to be at the VPN server’s location).  
+
+**Note:** Some VPNs may leak your real IP address or DNS queries — test if privacy is important.
+
+---
+
+**Summary of Secure Approaches**
+
+| **Method** | **Best For**                                               |
+|------------|------------------------------------------------------------|
+| TLS        | Securing individual protocols (HTTP, email, etc.)          |
+| SSH        | Remote administration + secure file transfer + tunneling   |
+| VPN        | Connecting entire networks or routing all traffic securely |
+
+---
+
+
+ **End of Room 4**
   
 </details> <!-- End Room 4 -->
 
@@ -2131,6 +2246,43 @@ D LOGOUT
 <summary><strong>Room 5 - Wireshark: The Basics</strong></summary>
 
   *Notes to come*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 </details> <!-- End Room 5 -->
 
