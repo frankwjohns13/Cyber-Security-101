@@ -2245,45 +2245,113 @@ Once connected, traffic is usually routed through the VPN server (you appear to 
 <details>
 <summary><strong>Room 5 - Wireshark: The Basics</strong></summary>
 
-  *Notes to come*
+### Wireshark: The Basics
+
+**Learning Objectives**
+- Navigate and configure Wireshark
+- Inspect packets across different TCP/IP layers
+- Apply basic display filters
+
+---
+
+#### What is Wireshark?
+
+Wireshark is an open-source network packet analyser.  
+It can:
+- Capture live traffic
+- Analyse packet capture (PCAP) files
+- Troubleshoot network issues
+- Investigate security anomalies
+- Study protocol behaviour
+
+**Important:** Wireshark is **not** an Intrusion Detection System (IDS). It only shows the traffic — finding problems depends on the analyst.
+
+---
+
+#### Main Interface Sections
+
+| Section | Purpose |
+|---------|---------|
+| **Toolbar** | Start/stop capture, open files, etc. |
+| **Display Filter Bar** | Filter what packets you see |
+| **Packet List Pane** | Summary of each packet |
+| **Packet Details Pane** | Detailed breakdown of the selected packet |
+| **Packet Bytes Pane** | Hex + ASCII view of the packet |
+| **Status Bar** | Shows packet counts and current profile |
+
+---
+
+#### Packet Dissection (OSI Layers)
+
+When you click a packet, Wireshark breaks it down by layers:
+
+| Layer | What you see |
+|-------|--------------|
+| **Frame** | Physical layer info |
+| **Ethernet** | Source & Destination MAC addresses |
+| **IP** | Source & Destination IP addresses |
+| **TCP/UDP** | Ports, flags, sequence numbers |
+| **Application** | HTTP, DNS, FTP, etc. |
+| **Data** | Actual payload |
+
+---
+
+#### Useful Navigation Features
+
+| Feature | How to use it |
+|---------|---------------|
+| **Go to Packet** | Jump to a specific packet number |
+| **Find Packet** | Search by string, hex, or regex |
+| **Mark Packet** | Highlight important packets (temporary) |
+| **Packet Comments** | Add notes that stay in the file |
+| **Export Packets** | Save only selected packets |
+| **Export Objects** | Extract files transferred over HTTP, SMB, etc. |
+| **Follow Stream** | Reconstruct full TCP/UDP/HTTP conversations |
+| **Expert Info** | Shows warnings and errors detected by Wireshark |
+
+---
+
+#### Colouring Packets
+
+Wireshark colours packets by protocol to make them easier to spot.
+
+- Green = TCP
+- Light blue = UDP
+- Black = Errors / malformed packets (or marked packets)
+
+You can create your own colouring rules under **View → Coloring Rules**.
+
+---
+
+#### Basic Display Filters
+
+| Goal | Filter Example |
+|------|----------------|
+| Show only HTTP | `http` |
+| Show only TCP port 80 | `tcp.port == 80` |
+| Show traffic to/from an IP | `ip.addr == 192.168.1.10` |
+| Show only DNS | `dns` |
+| Show only TCP | `tcp` |
+
+**Tips:**
+- Click any field → right-click → **Apply as Filter**
+- Right-click a packet → **Follow → TCP Stream** (or UDP/HTTP)
+- Use **Apply as Column** to add useful fields to the packet list
+
+---
+
+#### Quick Tips
+
+- Use **Statistics → Capture File Properties** to see file details
+- Change time format under **View → Time Display Format**
+- Marked packets turn black
+- Follow Stream is one of the most useful features for reading conversations
+
+---
+
+**End of Room**
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </details> <!-- End Room 5 -->
 
 ---
@@ -2293,6 +2361,54 @@ Once connected, traffic is usually routed through the VPN server (you appear to 
 
   *Notes to come*
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </details> <!-- End Room 6 -->
 
 ---
