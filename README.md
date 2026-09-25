@@ -2359,8 +2359,126 @@ You can create your own colouring rules under **View → Coloring Rules**.
 <details>
 <summary><strong>Room 6 - Tcpdump: The Basics</strong></summary>
 
-  *Notes to come*
-  
+### Tcpdump: The Basics
+
+**Learning Objectives**
+- Capture packets and save them to a file
+- Apply filters to captured traffic
+- Control how packets are displayed
+
+---
+
+#### Basic Capture Options
+
+| Option | Purpose |
+|--------|---------|
+| `-i INTERFACE` | Listen on a specific interface (`-i any` for all) |
+| `-w FILE` | Write packets to a file (usually `.pcap`) |
+| `-r FILE` | Read packets from a file |
+| `-c COUNT` | Capture only a specific number of packets |
+| `-n` | Don’t resolve IP addresses |
+| `-nn` | Don’t resolve IP addresses **or** port numbers |
+| `-v` / `-vv` / `-vvv` | Increase verbosity |
+
+**Examples:**
+```bash
+tcpdump -i eth0 -c 50 -v
+tcpdump -i any -w capture.pcap
+tcpdump -r traffic.pcap -n
+```
+
+---
+
+#### Filtering Expressions
+
+**By Host**
+```bash
+Bashtcpdump host 192.168.1.10
+tcpdump src host 192.168.1.10
+tcpdump dst host example.com
+```
+
+**By Port**
+```bash
+tcpdump port 53
+tcpdump src port 22
+tcpdump dst port 80
+```
+
+**By Protocol**
+```bash
+Bashtcpdump icmp
+tcpdump tcp
+tcpdump udp
+```
+
+**Logical Operators**
+- and
+- or
+- not
+
+**Examples:**
+```bash
+Bashtcpdump host 1.1.1.1 and tcp
+tcpdump udp or icmp
+tcpdump not tcp
+tcpdump tcp port 22
+```
+
+---
+
+#### Advanced Filtering (TCP Flags)
+**You can filter based on TCP flags:**
+```bash
+tcpdump "tcp[tcpflags] == tcp-syn"          # Only SYN
+tcpdump "tcp[tcpflags] & tcp-syn != 0"      # At least SYN
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-ack) != 0"
+```
+
+**Other useful filters:**
+```bash
+tcpdump greater 1000     # Packets ≥ 1000 bytes
+tcpdump less 100         # Packets ≤ 100 bytes
+```
+
+---
+
+#### Display Options
+
+| **Option** | **Purpose** |
+|------------|-------------|
+| `-q`       | Quick/brief output |
+| `-e`       | Show MAC addresses (link-level header) |
+| `-A`       | Show packet data as ASCII |
+| `-xx`      | Show packet data in hexadecimal |
+| `-X`       | Show both hex and ASCII |
+
+**Examples:**
+```bash
+tcpdump -r capture.pcap -q
+tcpdump -r capture.pcap -e
+tcpdump -r capture.pcap -A
+tcpdump -r capture.pcap -X
+```
+
+---
+
+#### Useful Combinations
+```bash
+# Capture HTTPS traffic to a specific site
+tcpdump -i eth0 host example.com and tcp port 443 -w https.pcap
+
+# Read a file and show only DNS
+tcpdump -r traffic.pcap port 53 -n
+
+# Show SYN packets only
+tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
+```
+
+---
+
+**End of Room**
+
 
 
 
