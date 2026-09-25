@@ -2393,7 +2393,7 @@ tcpdump -r traffic.pcap -n
 
 **By Host**
 ```bash
-Bashtcpdump host 192.168.1.10
+tcpdump host 192.168.1.10
 tcpdump src host 192.168.1.10
 tcpdump dst host example.com
 ```
@@ -2407,7 +2407,7 @@ tcpdump dst port 80
 
 **By Protocol**
 ```bash
-Bashtcpdump icmp
+tcpdump icmp
 tcpdump tcp
 tcpdump udp
 ```
@@ -2419,7 +2419,7 @@ tcpdump udp
 
 **Examples:**
 ```bash
-Bashtcpdump host 1.1.1.1 and tcp
+tcpdump host 1.1.1.1 and tcp
 tcpdump udp or icmp
 tcpdump not tcp
 tcpdump tcp port 22
@@ -2480,53 +2480,6 @@ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
 **End of Room**
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </details> <!-- End Room 6 -->
 
 ---
@@ -2535,6 +2488,61 @@ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
 <summary><strong>Room 7 - Namp: The Basics</strong></summary>
 
   *Notes to come*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 </details> <!-- End Room 7 -->
 
