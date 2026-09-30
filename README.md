@@ -1714,7 +1714,7 @@ Always start scripts with the correct shebang (`#!/bin/bash`)
 
 
 <details>
-<summary><strong>Module 5: Networking - Currently Working On</strong></summary>
+<summary><strong>Module 5: Networking - Finished</strong></summary>
 
 ---
 
@@ -2487,6 +2487,154 @@ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
 <details>
 <summary><strong>Room 7 - Namp: The Basics</strong></summary>
 
+### Nmap: The Basics
+
+**Learning Objectives**
+- Discover live hosts
+- Find running services
+- Understand different port scan types
+- Detect service versions and OS
+- Control scan timing
+- Format and save output
+
+---
+
+#### Host Discovery
+
+| Option | Purpose |
+|--------|---------|
+| `-sn` | Ping scan (host discovery only, no port scan) |
+| `-sL` | List targets without scanning |
+| `-Pn` | Treat all hosts as online (skip host discovery) |
+
+**Examples:**
+```bash
+nmap -sn 192.168.1.0/24
+nmap -sn 10.10.10.1-50
+nmap -sL 192.168.0.0/24
+```
+
+- On a local network, Nmap uses ARP requests and can show MAC addresses.
+- On a remote network, it uses ICMP, TCP SYN/ACK, etc.
+
+---
+
+#### Port Scanning
+
+| **Option** | **Scan Type** | **Description**                                      |
+|------------|---------------|------------------------------------------------------|
+| `-sS`      | SYN (Stealth) | Sends SYN only (default with root/sudo)              |
+| `-sT`      | Connect       | Completes full three-way handshake                   |
+| `-sU`      | UDP           | Scans UDP ports                                      |
+| `-F`       | Fast          | Scans the 100 most common ports                      |
+| `-p`       | Port range    | Specify ports (e.g. `-p 22,80,443` or `-p-` for all) |
+
+**Examples:**  
+```bash
+nmap -sS 10.10.10.10
+nmap -sT -F 10.10.10.10
+nmap -sU --top-ports 20 10.10.10.10
+nmap -p 1-1024 10.10.10.10
+nmap -p- 10.10.10.10          # Scan all 65535 ports
+```
+
+---
+
+#### Verbose & OS Detection
+
+| **Option** | **Purpose**                                           |
+|------------|-------------------------------------------------------|
+| `-sV`      | Service and version                                   |
+| `-O`       | Operating system detection                            |
+| `-A`       | Aggressive scan (OS + version + traceroute + scripts) |
+
+**Examples:**  
+```bash
+nmap -sS -sV 10.10.10.10
+nmap -sS -O 10.10.10.10
+nmap -A 10.10.10.10
+```
+
+---
+
+#### Timing Controls
+
+| **Option** | **Description**      |
+|------------|----------------------|
+| `-T0`      | Paranoid (very slow) |
+| `-T1`      | Sneaky               |
+| `T2`       | Polite               |
+| `T3`       | Normal (default)     |
+| `T4`       | Aggressive           |
+| `T5`       | Insane (very fast)   |
+
+**Additional Options**  
+```bash
+--min-rate 100
+--max-rate 500
+--host-timeout 30m
+```
+
+**Verbosity:**  
+```bash
+-v          # Verbose
+-vv         # More verbose
+-d          # Debugging
+```
+
+**Example:**  
+`nmap -sS -sV -O -oA scan_results 10.10.10.0/24`
+
+---
+
+#### Quick Reference Summary
+
+```bash
+# Discover live hosts
+nmap -sn 192.168.1.0/24
+
+# Basic stealth scan
+nmap -sS 10.10.10.10
+
+# Fast scan + version detection
+nmap -sS -sV -F 10.10.10.10
+
+# Full aggressive scan
+nmap -A -p- 10.10.10.10
+
+# Save results
+nmap -sS -sV -oA target_scan 10.10.10.10
+```
+
+**Note: Run Nmap with `sudo` (or as root) to unlock the full feature set (especially SYN scans).**
+
+---
+
+**End of Room**
+
+  
+</details> <!-- End Room 7 -->
+  
+</details> <!-- End of Module 5 --> 
+
+---
+
+<!--
+***********************************************************************
+***********************************************************************
+                       END OF MODULE 5
+***********************************************************************
+***********************************************************************
+-->
+
+<details>
+<summary><strong>Module 6: Cryptography - Currently Working On</strong></summary>
+
+---
+
+<details>
+<summary><strong>Room 1 - Cryptography Basics</summary>
+
   *Notes to come*
 
 
@@ -2543,33 +2691,6 @@ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
 
 
 
-  
-</details> <!-- End Room 7 -->
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2584,43 +2705,42 @@ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-syn" -n
 
 
   
-</details> <!-- End of Module 5 --> 
+  **End of Room**
+  
+</details> <!-- End of Room 1 --> 
 
 ---
-
-<!--
-***********************************************************************
-***********************************************************************
-                       END OF MODULE 5
-***********************************************************************
-***********************************************************************
--->
 
 <details>
-<summary><strong>Module 6</strong></summary>
+<summary><strong>Room 2 - Public Key Cryptography Basics</summary>
 
+*Notes to come*
+    
+  **End of Room**
+  
+</details> <!-- End of Room 2 --> 
 
+---
 
+<details>
+<summary><strong>Room 3 - Hashing Basics</summary>
 
+  *Notes to come*
+  
+  **End of Room**
+  
+</details> <!-- End of Room 3 --> 
 
+---
 
+<details>
+<summary><strong>Room 4 - John the Ripper: The Basics</summary>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  *Notes to come*
+  
+  **End of Room**
+  
+</details> <!-- End of Room 4 --> 
 
 
 
