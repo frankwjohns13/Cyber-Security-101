@@ -2635,78 +2635,88 @@ nmap -sS -sV -oA target_scan 10.10.10.10
 <details>
 <summary><strong>Room 1 - Cryptography Basics</summary>
 
-  *Notes to come*
+### Room 1 - Cryptography Basics
 
+**Learning Objectives**
+- Learn key cryptography terms
+- Understand why cryptography matters
+- Explore the Caesar Cipher
+- Get an overview of symmetric and asymmetric ciphers
+- Review basic math used in cryptography
 
+---
 
+#### Why Cryptography Matters
 
+Cryptography’s main goal is **secure communication in the presence of adversaries**.
 
+It protects:
+- **Confidentiality** — only authorized people can read the data
+- **Integrity** — data cannot be changed without detection
+- **Authenticity** — you are talking to the real server/person
 
+**Everyday examples:**
+- Logging into websites (credentials are encrypted)
+- SSH sessions (encrypted tunnel)
+- Online banking (certificate checks + encryption)
+- File downloads (hash functions confirm integrity)
 
+Regulations that require cryptography:
+- **PCI DSS** (credit card data)
+- **HIPAA / HITECH** (medical records – USA)
+- **GDPR** (EU)
+- **DPA** (UK)
 
+---
 
+#### Key Terms
 
+| Term | Meaning |
+|------|---------|
+| **Plaintext** | Original readable data (message, file, image, etc.) |
+| **Ciphertext** | Scrambled, unreadable version after encryption |
+| **Cipher** | Algorithm that converts plaintext ↔ ciphertext |
+| **Key** | Secret value the cipher uses to encrypt/decrypt |
+| **Encryption** | Turning plaintext into ciphertext using a cipher + key |
+| **Decryption** | Turning ciphertext back into plaintext using a cipher + key |
 
+**Basic flow:**
+- Plaintext + Key → Encryption → Ciphertext
+- Ciphertext + Key → Decryption → Plaintext
 
+---
 
+#### Historical Ciphers (Caesar Cipher)
 
+The **Caesar Cipher** is one of the oldest and simplest ciphers.
 
+- Each letter is shifted by a fixed number of positions in the alphabet.
+- Example with shift of 3:
+  - A → D
+  - B → E
+  - C → F
+  - ...
+  - X → A
+  - Y → B
+  - Z → C
 
+It is a **substitution cipher** and is very easy to break with modern methods (or even by hand).
 
+---
 
+#### Symmetric vs Asymmetric (Preview)
 
+| Type | Key Usage | Examples |
+|------|-----------|----------|
+| **Symmetric** | Same key for encryption and decryption | AES, DES, ChaCha20 |
+| **Asymmetric** | Public key + Private key | RSA, ECC, Diffie-Hellman |
 
+(You will go deeper into these in the next rooms.)
 
+---
 
+**End of Room 1**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  **End of Room**
-  
 </details> <!-- End of Room 1 --> 
 
 ---
@@ -2715,7 +2725,72 @@ nmap -sS -sV -oA target_scan 10.10.10.10
 <summary><strong>Room 2 - Public Key Cryptography Basics</summary>
 
 *Notes to come*
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   **End of Room**
   
 </details> <!-- End of Room 2 --> 
