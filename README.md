@@ -2628,7 +2628,7 @@ nmap -sS -sV -oA target_scan 10.10.10.10
 -->
 
 <details>
-<summary><strong>Module 6: Cryptography - Currently Working On</strong></summary>
+<summary><strong>Module 6: Cryptography - Finished</strong></summary>
 
 ---
 
@@ -2724,74 +2724,144 @@ It is a **substitution cipher** and is very easy to break with modern methods (o
 <details>
 <summary><strong>Room 2 - Public Key Cryptography Basics</summary>
 
-*Notes to come*
+### Room 2 - Public Key Cryptography Basics
 
+**Learning Objectives**
+- Understand common uses of asymmetric encryption
+- Learn how RSA works
+- Understand Diffie-Hellman key exchange
+- Explore SSH key authentication
+- Learn about digital signatures and certificates
+- Get an introduction to PGP/GPG
 
+---
 
+#### Why Asymmetric Cryptography?
 
+Symmetric encryption is fast but has a key distribution problem.  
+Asymmetric (public-key) cryptography solves this by using a **key pair**:
 
+- **Public key** → Can be shared openly (used for encryption / verification)
+- **Private key** → Must be kept secret (used for decryption / signing)
 
+**Main uses:**
+- Securely exchanging symmetric keys
+- Authentication
+- Digital signatures
+- Certificates
 
+---
 
+#### RSA
 
+RSA is based on the difficulty of factoring large numbers.
 
+**Key variables:**
+| Variable | Meaning |
+|----------|---------|
+| `p`, `q` | Large prime numbers |
+| `n` | Product of p × q |
+| `e` | Public exponent |
+| `d` | Private exponent |
+| `m` | Plaintext message |
+| `c` | Ciphertext |
 
+**Basic process:**
+1. Choose two large primes `p` and `q`
+2. Calculate `n = p × q`
+3. Choose `e` (public) and calculate `d` (private)
+4. Public key = `(n, e)`
+5. Private key = `(n, d)`
 
+**Encryption:** `c = m^e mod n`  
+**Decryption:** `m = c^d mod n`
 
+---
 
+#### Diffie-Hellman Key Exchange
 
+Allows two parties to establish a shared secret over an insecure channel.
 
+**Steps (simplified):**
+1. Agree on public values: large prime `p` and generator `g`
+2. Each party chooses a private number
+3. Each calculates a public value and exchanges it
+4. Both parties compute the same shared secret
 
+This shared secret can then be used for symmetric encryption.
 
+---
 
+#### SSH Key Authentication
 
+SSH commonly uses public-key authentication instead of passwords.
 
+**Key generation:**
+```bash
+ssh-keygen -t ed25519
+```
 
+**Common algorithms:**
+- RSA
+- ECDSA
+- Ed25519 (recommended)
 
+**Important points:**
+- Private key must stay private
+- Permissions on private key should be restricted (chmod 600)
+- You can protect the private key with a passphrase
+- Public key goes in ~/.ssh/authorized_keys on the server
 
+---
 
+#### Digital Signatures & Certificates
 
+**Digital Signatures**
+- Created with a private key
+- Verified with the corresponding public key
+- Proves authenticity and integrity
 
+**Certificates**
+- Bind a public key to an identity
+- Issued by a Certificate Authority (CA)
+- Used heavily in HTTPS (TLS certificates)
+- Rely on a chain of trust (Root CA → Intermediate → Server certificate)
 
+Free certificates can be obtained from Let’s Encrypt.
 
+---
 
+#### PGP / GPG
 
+- **PGP** = Pretty Good Privacy
+- **GPG** = GnuPG (open-source implementation)
 
+Used for:
+- Encrypting files and emails
+- Digital signing
 
+**Common commands:**
 
+```Bash
+gpg --full-gen-key          # Generate a key pair
+gpg --import backup.key     # Import a key
+gpg --decrypt file.gpg      # Decrypt a file
+```
 
+**Key Takeaways**
 
+| **Concept**        | **Purpose**                           |
+|--------------------|---------------------------------------|
+| RSA                | Encryption, signatures, key transport |
+| Diffie-Hellman     | Secure key exchange                   |
+| SSH Keys           | Passwordless authentication           |
+| Digital Signatures | Prove who sent a message + integrity  |
+| Certificates       | Prove identity of servers/websites    |
+| GPG                | Encrypt and sign emails/files         |
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  **End of Room**
+**End of Room 2**
   
 </details> <!-- End of Room 2 --> 
 
@@ -2800,9 +2870,140 @@ It is a **substitution cipher** and is very easy to break with modern methods (o
 <details>
 <summary><strong>Room 3 - Hashing Basics</summary>
 
-  *Notes to come*
-  
-  **End of Room**
+### Room 3 - Hashing Basics
+
+**Learning Objectives**
+- Understand hash functions and collisions
+- Learn how hashing is used in authentication
+- Recognize common password hash formats
+- Understand password cracking concepts
+- Use hashing for integrity checking
+
+---
+
+#### What is a Hash Function?
+
+A **hash function** takes input of any size and produces a fixed-size output (hash / digest).
+
+**Key properties:**
+- One-way (practically impossible to reverse)
+- Deterministic (same input always gives same output)
+- Avalanche effect (tiny change in input → large change in output)
+- Collision-resistant (hard to find two inputs with the same hash)
+
+**Common hash algorithms:**
+| Algorithm | Output Size | Status |
+|-----------|-------------|--------|
+| MD5 | 128-bit | Broken (collisions found) |
+| SHA-1 | 160-bit | Broken (collisions found) |
+| SHA-256 | 256-bit | Still secure |
+| SHA-512 | 512-bit | Still secure |
+
+**Example commands:**
+```bash
+md5sum file.txt
+sha1sum file.txt
+sha256sum file.txt
+```
+
+---
+
+#### Hash Collisions
+
+A collision occurs when two different inputs produce the same hash.  
+Because the input space is infinite and the output space is finite (pigeonhole principle), collisions are theoretically inevitable. Good hash functions make finding them computationally infeasible.  
+MD5 and SHA-1 are no longer considered secure for password hashing or digital signatures due to practical collision attacks.
+
+---
+
+#### Hashing for Password Storage
+
+Never store passwords in plaintext.
+
+**Insecure practices:**
+- Storing plaintext passwords
+- Using weak/deprecated encryption
+- Using unsalted or weak hashes (e.g., plain MD5/SHA-1)
+
+**Secure approach:**
+1. Choose a strong adaptive hash function (Argon2, bcrypt, scrypt, PBKDF2)
+2. Generate a unique salt for each user
+3. Hash: `hash(password + salt)`
+4. Store both the hash and the salt
+
+**Why salt?**
+- Prevents rainbow table attacks
+- Ensures identical passwords produce different hashes
+
+---
+
+#### Recognizing Password Hashes
+
+Linux (`/etc/shadow`) format:
+
+``` text
+$prefix$options$salt$hash
+```
+
+| **Prefix**             | **Algorithm**             |
+|------------------------|---------------------------|
+| `$y$`                  | yescrypt (modern default) |
+| `$2b$`, `$2y$`, `$2a$` | bcrypt                    |
+| `$6$`                  | sha512crypt               |
+| `$1$`                  | md5crypt                  |
+
+Windows: NTLM hashes (look similar to MD4/MD5 — context matters).
+
+---
+
+#### Password Cracking
+You cannot “decrypt” a hash — you must crack it by hashing guesses and comparing.
+
+**Common tools:**
+- John the Ripper
+- Hashcat
+
+**Basic Hashcat syntax:**
+
+```Bash
+hashcat -m <hash_type> -a 0 hash.txt /usr/share/wordlists/rockyou.txt
+```
+
+**Attack modes:**
+- Dictionary attack (using wordlists like rockyou.txt)
+- Brute-force
+- Hybrid / rules-based
+
+GPUs are much faster than CPUs for most hash types (except memory-hard ones like bcrypt/scrypt).
+
+---
+
+#### Hashing for Integrity
+
+Hashing is excellent for checking whether a file has changed.
+
+**Common use cases:**
+- Verifying downloaded files (compare against published hash)
+- Detecting file modifications
+- Finding duplicate files
+
+**HMAC (Keyed-Hash Message Authentication Code):**
+- Combines a hash function with a secret key
+- Provides both integrity and authenticity
+
+---
+
+#### Hashing vs Encoding vs Encryption
+
+| **Concept** | **Reversible?** | **Purpose**                               |
+|-------------|-----------------|-------------------------------------------|
+| Hashing     | No              | Integrity, password storage               |
+| Encoding    | Yes             | Data representation (Base64, UTF-8, etc.) |
+| Encryption  | Yes (with key)  | Confidentiality                           |
+
+---
+    
+**End of Room 3**
   
 </details> <!-- End of Room 3 --> 
 
@@ -2811,15 +3012,183 @@ It is a **substitution cipher** and is very easy to break with modern methods (o
 <details>
 <summary><strong>Room 4 - John the Ripper: The Basics</summary>
 
-  *Notes to come*
-  
-  **End of Room**
+### Room 4 - John the Ripper: The Basics
+
+**Learning Objectives**
+- Crack basic hashes
+- Crack Windows NTLM hashes
+- Crack Linux `/etc/shadow` hashes
+- Use Single Crack mode
+- Create custom rules
+- Crack password-protected Zip and RAR files
+- Crack SSH private key passphrases
+
+---
+
+#### What is John the Ripper?
+
+John the Ripper (Jumbo John) is a fast, versatile hash-cracking tool that supports a wide range of hash types.
+
+**Basic syntax:**
+```bash
+john [options] [hash_file]
+```
+
+**Common options:**
+
+| **Option** | **Purpose**                                 |
+|------------|---------------------------------------------|
+| `--wordlist=<file>` | Use a wordlist (dictionary attack) | 
+| `--format=<type>`   | Specify the hash format            |
+| `--single`          | Use Single Crack mode              |
+| `--show`            | Show cracked passwords             |
+
+---
+
+#### Identifying Hashes
+
+Use tools like hash-identifier or online hash identifiers when John can’t auto-detect the format.
+
+```bash
+python3 hash-id.py
+```
+
+Then run John with the correct format:
+
+```bash
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+```
+
+---
+
+#### Cracking Windows Hashes (NTLM)
+
+Windows stores passwords as NTLM hashes.
+```Bash
+john --format=NT --wordlist=/usr/share/wordlists/rockyou.txt ntlm.txt
+```
+
+---
+
+#### Cracking Linux `/etc/shadow` Hashes
+
+1. Combine `/etc/passwd` and `/etc/shadow` using unshadow:
+
+```bash
+unshadow passwd_file shadow_file > unshadowed.txt
+```
+
+2. Crack the result:
+
+```bash
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt unshadowed.txt
+```
+
+---
+
+#### Single Crack Mode
+
+John generates password candidates based on the username (word mangling).
+
+**Requirements:**
+- Hash must be prefixed with the username:
+
+```text
+username:hash
+```
+
+**Command:**
+
+```bash
+john --single --format=raw-sha256 hashes.txt
+```
+
+---
+
+#### Custom Rules
+
+Custom rules are defined in `john.conf`.  
+Example rule (capitalise first letter + append number + symbol):
+
+```text
+[List.Rules:THMRules]
+cAz"[0-9][!£$%@]"
+```
+
+**Usage:**
+
+```bash
+john --wordlist=rockyou.txt --rule=THMRules hash.txt
+```
+
+---
+
+#### Cracking Zip Files
+
+1. Convert the "Zip to a john-compatible hash:
+
+```bash
+zip2john secret.zip > zip_hash.txt
+```
+
+2. Crack it:
+
+```bash
+john --wordlist=/usr/share/wordlists/rockyou.txt zip_hash.txt
+```
+
+---
+
+#### Cracking RAR Files
+
+1. Convert the RAR
+
+```bash
+rar2john secret.rar > rar_hash.txt
+```
+
+2. Crack it:
+
+```bash
+john --wordlist=/usr/share/wordlists/rockyou.txt rar_hash.txt
+```
+
+---
+
+#### Cracking SSH Private Keys
+
+1. Convert the private key:
+
+```bash
+ssh2john id_rsa > id_rsa_hash.txt
+# or
+python3 /opt/john/ssh2john.py id_rsa > id_rsa_hash.txt
+```
+
+2. Crack the passphrase:
+
+```bash
+john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
+```
+
+---
+
+#### Quick Reference
+
+| **Target**   | **Tool / Command**                                      |
+|--------------|---------------------------------------------------------|
+| Basic hash   | `john --format=raw-md5 --wordlist=rockyou.txt hash.txt` |
+| Windows NTLM | `john --format=NT ...`                                  |
+| Linux shadow | `unshadow` → `john`                                     |
+| Zip          | `zip2john` → `john`                                     |
+| RAR          | `rar2john` → `john`                                     |
+| SSH key      | `ssh2john` → `john`                                     |
+
+---
+
+**End of Room**
   
 </details> <!-- End of Room 4 --> 
-
-
-
-
 
   
 </details> <!-- End of Module 6 --> 
@@ -2835,7 +3204,12 @@ It is a **substitution cipher** and is very easy to break with modern methods (o
 -->
 
 <details>
-<summary><strong>Module 7</strong></summary>
+<summary><strong>Module 7 - Currently Working On</strong></summary>
+
+
+
+
+
 
 
 
