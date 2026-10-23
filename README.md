@@ -3206,6 +3206,12 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 <details>
 <summary><strong>Module 7 - Currently Working On</strong></summary>
 
+---
+
+<details>
+<summary><strong>Room 1 - Moniker Link (CVE-2024-21413)</strong></summary>
+
+### Room 1 - Moniker Link (CVE-2024-21413)
 
 
 
@@ -3215,6 +3221,71 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details> <!-- Ends Room 1 ->>
+
+---
+
+<details>
+<summary><strong>Room 2 - Metasploit: Introduction</strong></summary>
+
+
+  
+</details> <!-- Ends Room 2 -->
+
+---
+
+<details>
+<summary><strong>Room 3 - Metasploit: Exploitation</strong></summary>
+
+
+  
+</details> <!-- Ends Room 3 -->
+
+---
+
+<details>
+<summary><strong>Room 4 - Metasploit: Meterpreter</strong></summary>
+
+
+
+  
+</details> <!-- Ends Room 4 -->
+
+---
+
+<details>
+<summary><strong>Room 5 - Blue</strong></summary>
+
+  
+</details> <!-- Ends Room 5 -->
 
 
 
