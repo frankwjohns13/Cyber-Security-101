@@ -3247,17 +3247,15 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 
 
 
-
-
-</details> <!-- Ends Room 1 ->>
+</details> <!-- Ends Room 1 -->
 
 ---
 
 <details>
 <summary><strong>Room 2 - Metasploit: Introduction</strong></summary>
 
+### Room 2 - Metasploit: Introduction
 
-  
 </details> <!-- Ends Room 2 -->
 
 ---
@@ -3265,8 +3263,8 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 <details>
 <summary><strong>Room 3 - Metasploit: Exploitation</strong></summary>
 
+### Room 3 - Metasploit: Exploitation
 
-  
 </details> <!-- Ends Room 3 -->
 
 ---
@@ -3274,9 +3272,8 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 <details>
 <summary><strong>Room 4 - Metasploit: Meterpreter</strong></summary>
 
+### Room 4 - Metasploit: Meterpreter
 
-
-  
 </details> <!-- Ends Room 4 -->
 
 ---
@@ -3284,34 +3281,11 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 <details>
 <summary><strong>Room 5 - Blue</strong></summary>
 
-  
+### Room 5 - Blue
+
 </details> <!-- Ends Room 5 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-</details> <!-- End of Module 7 --> 
+</details> <!-- End of Module 7 -->
 
 ---
 
